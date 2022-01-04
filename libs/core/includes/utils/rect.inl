@@ -188,3 +188,10 @@ inline bool operator>=(const sw::Rect<T>& left, const sw::Rect<T>& right)
         return (true);
     return (false);
 }
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const sw::Rect<T>& rect)
+{
+    os  << "Rectangle<" << typeid(rect.left).name() << "> : [ left:" << rect.left << " , top:" << rect.top << " , width" << rect.width << " , height:" << rect.height << " ]\n";
+    return (os);
+}

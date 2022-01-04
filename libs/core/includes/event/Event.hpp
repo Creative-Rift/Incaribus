@@ -6,25 +6,26 @@
 ** Description: [CHANGE]
 */
 
-#ifndef SHIPWRECKENGINE_EVENT_HPP
-#define SHIPWRECKENGINE_EVENT_HPP
+#ifndef __SHIPWRECK_EVENT_HPP__
+#define __SHIPWRECK_EVENT_HPP__
 
 #include <string>
 #include <memory>
 #include <forward_list>
 #include <set>
 
-#include "concepts.hpp"
+#include "../Config.hpp"
+#include "../concepts.hpp"
+
 #include "EventListener.hpp"
 
 namespace sw
 {
 
-    class Event
+    class SW_CORE_API_EXPORT Event
     {
         private:
-            std::forward_list<std::unique_ptr<IEventListener>> m_listenerList;
-
+            std::forward_list<std::shared_ptr<IEventListener>> m_listenerList;
         public:
             Event()
                 :   m_listenerList{}
@@ -47,4 +48,4 @@ namespace sw
 
 } // namespace sw
 
-#endif //SHIPWRECKENGINE_EVENT_HPP
+#endif // __SHIPWRECK_EVENT_HPP__

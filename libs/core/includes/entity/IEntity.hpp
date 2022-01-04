@@ -8,7 +8,7 @@
 #ifndef __SHIPWRECK_IENTITY_HPP__
 #define __SHIPWRECK_IENTITY_HPP__
 
-#include "concepts.hpp"
+#include "../concepts.hpp"
 
 namespace sw
 {
@@ -19,7 +19,7 @@ namespace sw
         public:
             virtual ~IEntity() = default;
 
-            virtual std::string name() = 0;
+            virtual std::string name() const = 0;
             virtual AScene& scene() = 0;
             virtual bool isActive() const = 0;
             virtual void setActive(bool value) = 0;

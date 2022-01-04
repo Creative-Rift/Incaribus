@@ -5,11 +5,11 @@
 ** NotImplemented.hpp
 */
 
-#ifndef __NOTIMPLEMENTED__HPP
-#define __NOTIMPLEMENTED__HPP
+#ifndef __SHIPWRECK_NOTIMPLEMENTED__HPP__
+#define __SHIPWRECK_NOTIMPLEMENTED__HPP__
 
 #include <string>
-#include "error/Error.hpp"
+#include "Error.hpp"
 
 namespace sw
 {
@@ -31,4 +31,4 @@ namespace sw
 
 
 
-#endif //__NOTIMPLEMENTED__HPP
+#endif //__SHIPWRECK_NOTIMPLEMENTED__HPP__

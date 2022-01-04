@@ -13,10 +13,10 @@
 #include <type_traits>
 
 #include "IEntity.hpp"
-#include "component/IComponent.hpp"
-#include "scene/AScene.hpp"
-#include "manager/AManager.hpp"
-#include "utils/Reference.hpp"
+#include "../component/IComponent.hpp"
+#include "../scene/AScene.hpp"
+#include "../manager/AManager.hpp"
+#include "../utils/Reference.hpp"
 
 namespace sw
 {
@@ -41,7 +41,7 @@ namespace sw
             Entity(const std::string& entityName, AScene& sceneRef, bool isActive);
             ~Entity() = default;
 
-            std::string name() override;
+            std::string name() const override;
             AScene& scene() override;
             bool isActive() const override;
             void setActive(bool value) override;
@@ -63,6 +63,7 @@ namespace sw
 
     }; // class Entity
 
+    std::ostream& operator<<(std::ostream& os, const Entity& entity);
 
     #include "Entity.inl"
 

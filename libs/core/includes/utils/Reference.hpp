@@ -5,8 +5,8 @@
 ** Reference.hpp
 */
 
-#ifndef __REFERENCE_H__
-#define __REFERENCE_H__
+#ifndef __SHIPWRECK_REFERENCE_HPP__
+#define __SHIPWRECK_REFERENCE_HPP__
 
 #include <optional>
 #include <functional>
@@ -45,8 +45,11 @@ namespace sw
 
     }; // class Reference
 
+    template <typename T>
+    std::ostream& operator<<(std::ostream& os, const Reference<T>& ref);
+
     #include "Reference.inl"
 
 } // namespace sw
 
-#endif // __REFERENCE_H__
+#endif // __SHIPWRECK_REFERENCE_HPP__

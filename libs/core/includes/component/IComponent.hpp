@@ -5,10 +5,10 @@
 ** IComponent.hpp
 */
 
-#ifndef __ICOMPONENT_H__
-#define __ICOMPONENT_H__
+#ifndef __SHIPWRECK_ICOMPONENT_HPP__
+#define __SHIPWRECK_ICOMPONENT_HPP__
 
-#include "concepts.hpp"
+#include "../concepts.hpp"
 
 namespace sw
 {
@@ -21,8 +21,9 @@ namespace sw
             virtual void setActive(bool value) = 0;
             virtual bool isActive() const = 0;
             virtual Entity& entity() const = 0;
+            virtual std::string type() const = 0;
     };
 
 }
 
-#endif // __ICOMPONENT_H__
+#endif // __SHIPWRECK_ICOMPONENT_HPP__

@@ -10,6 +10,8 @@
 
 #include <stdexcept>
 
+#include "../Log.hpp"
+
 namespace sw
 {
 
@@ -27,6 +29,7 @@ namespace sw
             Error& operator=(Error const &) = delete;
             Error& operator=(Error&&) = delete;
 
+            Error(const Log& log);
             Error(const std::string& message, const std::string& code);
             Error(const Error&);
             ~Error() override = default;
@@ -35,6 +38,8 @@ namespace sw
             [[nodiscard]] const std::string& getCode() const;
 
     }; // class Error
+
+    #include "Error.inl"
 
 } // namespace sw
 

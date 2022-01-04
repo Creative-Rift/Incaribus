@@ -37,7 +37,7 @@ inline void sw::Chrono::tour()
     m_tour = m_end;
 }
 
-inline double sw::Chrono::getElapsedTime()
+inline double sw::Chrono::getElapsedTime() const
 {
     if (m_isRunning)
         m_end = std::chrono::steady_clock::now();
@@ -45,7 +45,7 @@ inline double sw::Chrono::getElapsedTime()
     return (step / 1000);
 }
 
-inline double sw::Chrono::getTotalTime()
+inline double sw::Chrono::getTotalTime() const
 {
     if (m_isRunning)
         m_end = std::chrono::steady_clock::now();
@@ -56,4 +56,13 @@ inline double sw::Chrono::getTotalTime()
 inline bool sw::Chrono::isRunning() const
 {
     return (m_isRunning);
+}
+
+inline std::ostream& operator<<(std::ostream& os, const sw::Chrono& chrono)
+{
+    os  << "Chrono :\n"
+        << "\nIn progress : " << std::boolalpha << chrono.isRunning() << "\n"
+        << "\nElapsed time : " << chrono.getElapsedTime() << "\n"
+        << "\nTotal time : " << chrono.getTotalTime() << "\n";
+    return (os);
 }

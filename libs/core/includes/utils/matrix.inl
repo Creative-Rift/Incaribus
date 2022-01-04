@@ -148,3 +148,21 @@ inline sw::Matrix<T> operator*=(sw::Matrix<T>& left, const sw::Matrix<T>& right)
     left = result;
     return (left);
 }
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const sw::Matrix<T>& matrix)
+{
+    auto& vec = matrix.getMatrix();
+
+    os << "Matrix<" << typeid(vec[0][0]).name() << "> :\n";
+    for (int line = 0; line < matrix.line(); line += 1) {
+        os << "\t[ ";
+        for (int col = 0; col < matrix.col(); col += 1) {
+            os << vec[line][col];
+            if (col + 1 < matrix.col())
+                os << " , ";
+        }
+        os << " ]\n";
+    }
+    return (os);
+}

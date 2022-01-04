@@ -159,6 +159,9 @@ namespace sw
     typedef Matrix<unsigned int> Matrixu;
     typedef Matrix<float>        Matrixf;
 
+    template <typename T>
+    std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix);
+
     #include "matrix.inl"
 
 } // namespace sw

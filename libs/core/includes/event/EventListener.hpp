@@ -6,20 +6,23 @@
 ** Description: [CHANGE]
 */
 
-#ifndef SHIPWRECKENGINE_EVENTLISTENER_HPP
-#define SHIPWRECKENGINE_EVENTLISTENER_HPP
+#ifndef __SHIPWRECK_EVENTLISTENER_HPP__
+#define __SHIPWRECK_EVENTLISTENER_HPP__
 
 #include <map>
 #include <variant>
 
-#include "concepts.hpp"
-#include "event/IEventListener.hpp"
+#include "../Config.hpp"
+#include "../concepts.hpp"
+
+#include "IEventListener.hpp"
+#include "../utils/Speech.hpp"
 
 namespace sw
 {
 
     template<ConcreteComponent Cpt>
-    class EventListener
+    class SW_CORE_API_EXPORT EventListener
         :   public IEventListener
     {
 
@@ -46,4 +49,4 @@ namespace sw
 
 } // namespace sw
 
-#endif //SHIPWRECKENGINE_EVENTLISTENER_HPP
+#endif //__SHIPWRECK_EVENTLISTENER_HPP__

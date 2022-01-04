@@ -5,24 +5,34 @@
 ** managerFunction.inl
 */
 
-template<sw::ConcreteManager Manager, typename... Args>
+template<ConcreteManager Manager, typename... Args>
 inline Manager& sw::AScene::createManager(const std::string& managerName, Args... args)
 {
-    auto it = m_managerMap.find(managerName);
+    if (m_managerMap.contains(managerName))
+        sw::Speech::Warning(sw::Log::warning324(FUNCTION, m_name, managerName));
 
-    if (it == m_managerMap.end()) {
-        it = m_managerMap.emplace(managerName, std::make_unique<Manager>(managerName, *this, args...)).first;
+    auto it = m_managerMap.try_emplace(managerName, std::make_unique<Manager>(managerName, *this, args...));
+    if (it.second)
         m_managerLayer.emplace_front(std::make_pair(0, managerName));
-    }
-    return (static_cast<Manager&>(*it->second.get()));
+    return (static_cast<Manager&>(*(it.first->second)));
 }
 
-template<sw::ConcreteManager Manager>
-inline Manager& sw::AScene::getManager(const std::string& managerName)
+inline bool sw::AScene::hasManager(const std::string& managerName)
 {
-    auto it = m_managerMap.find(managerName);
+    return (m_managerMap.contains(managerName));
+}
 
-    if (it == m_managerMap.end())
-        throw sw::Error("sw::scene::getManager - scene <" + m_name + "> can't find Manager <" + managerName + ">", "4314");
-    return (static_cast<Manager&>(*it->second.get()));
+template<ConcreteManager Manager>
+inline Manager& sw::AScene::getManager(const std::string& managerName)
+try
+{
+    return (static_cast<Manager&>(*m_managerMap.at(managerName)));
+}
+catch (std::out_of_range&) {
+    throw sw::Error(sw::Log::error314(FUNCTION, m_name, managerName));
+}
+
+inline std::size_t sw::AScene::managersCount() const
+{
+    return (m_managerMap.size());
 }

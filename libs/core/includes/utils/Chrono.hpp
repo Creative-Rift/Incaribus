@@ -5,8 +5,8 @@
 ** Chrono.hpp
 */
 
-#ifndef __CHRONO_H__
-#define __CHRONO_H__
+#ifndef __SHIPWRECK_CHRONO_HPP__
+#define __SHIPWRECK_CHRONO_HPP__
 
 #include <chrono>
 
@@ -19,7 +19,7 @@ namespace sw
         private:
             std::chrono::time_point<std::chrono::steady_clock> m_start;
             std::chrono::time_point<std::chrono::steady_clock> m_tour;
-            std::chrono::time_point<std::chrono::steady_clock> m_end;
+            mutable std::chrono::time_point<std::chrono::steady_clock> m_end;
             bool m_isRunning;
 
         public:
@@ -31,14 +31,16 @@ namespace sw
             void start();
             void stop();
             void tour();
-            double getElapsedTime();
-            double getTotalTime();
+            double getElapsedTime() const;
+            double getTotalTime() const;
             [[nodiscard]] bool isRunning() const;
 
     }; // class Chrono
+
+    std::ostream& operator<<(std::ostream& os, const Chrono& chrono);
 
     #include "Chrono.inl"
 
 } // namespace sw
 
-#endif // __CHRONO_H__
+#endif // __SHIPWRECK_CHRONO_HPP__

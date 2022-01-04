@@ -45,3 +45,10 @@ T& sw::Reference<T>::operator*() const
 {
     return (m_value.value().get());
 }
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const sw::Reference<T>& ref)
+{
+    os << "Reference <" << *ref << ">\n";
+    return (os);
+}

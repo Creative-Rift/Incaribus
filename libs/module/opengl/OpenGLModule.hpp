@@ -14,31 +14,31 @@
 
 #include "SW/Engine.hpp"
 
+#include "OpenGLModule_Config.hpp"
+
 #include <memory>
 
 namespace sw
 {
-    class OpenGLModule : public sw::AModule
+    class SW_GRAPH_MODULE_EXPORT OpenGLModule : public sw::AModule
     {
         private:
-            GLFWwindow *m_window;
+            GLFWwindow *m_window{};
 
-            void onInitialize() override;
-            void onUpdate() override;
-            void onTerminate() override;
+            static void resizeCallBack(GLFWwindow* window, int width, int height);
+            void setUpCallBack();
         public:
-            OpenGLModule(const std::string& name);
-            ~OpenGLModule() = default;
+            explicit OpenGLModule();
+            ~OpenGLModule() override = default;
 
             void initialize() override;
             void update() override;
             void terminate() override;
             bool isOk() override;
-            bool isDebuging() override;
+            [[nodiscard]] std::string type() const override;
 
             std::unique_ptr<sw::AResources> createResourceInstance() override;
     }; // class OpenGLModule
-
 } // namespace sw
 
 #endif //SWENGINE_GRAPHICAL_OPENGLMODULE_HPP

@@ -9,7 +9,7 @@
 #ifndef SWENGINE_OPENGLMODULE_OPENRESOURCES_HPP
 #define SWENGINE_OPENGLMODULE_OPENRESOURCES_HPP
 
-#include "SW/OpenResources.hpp"
+#include "core/includes/resources/AResources.hpp"
 
 namespace sw
 {

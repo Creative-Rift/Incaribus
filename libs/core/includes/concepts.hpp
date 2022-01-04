@@ -1,12 +1,12 @@
 /*
-** EPITECH PROJECT, 2021
-** Epitech Years 3
+** SHIPWRECK ENGINE, 2021
+** Software Engine Project
 ** File description:
 ** concepts.hpp
 */
 
-#ifndef __CONCEPTS_H__
-#define __CONCEPTS_H__
+#ifndef __SHIPWRECK_CONCEPTS_HPP__
+#define __SHIPWRECK_CONCEPTS_HPP__
 
 #include <concepts>
 
@@ -19,6 +19,7 @@ namespace sw
     class EventInfo;
     class IEventListener;
     class Error;
+    class Log;
 
     class AModule;
     class AScene;
@@ -62,4 +63,4 @@ namespace sw
 
 } // namespace sw
 
-#endif // __CONCEPTS_H__
+#endif // __SHIPWRECK_CONCEPTS_HPP__

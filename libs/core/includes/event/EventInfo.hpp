@@ -6,10 +6,10 @@
 ** Description: [CHANGE]
 */
 
-#ifndef SHIPWRECKENGINE_EVENTINFO_HPP
-#define SHIPWRECKENGINE_EVENTINFO_HPP
+#ifndef __SHIPWRECK_EVENTINFO_HPP__
+#define __SHIPWRECK_EVENTINFO_HPP__
 
-#include "core/includes/concepts.hpp"
+#include "../concepts.hpp"
 
 namespace sw
 {
@@ -40,4 +40,4 @@ namespace sw
 
 } // namespace sw
 
-#endif //SHIPWRECKENGINE_EVENTINFO_HPP
+#endif // __SHIPWRECK_EVENTINFO_HPP__

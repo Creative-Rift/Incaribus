@@ -10,22 +10,22 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <unordered_set>
 #include <map>
 #include <memory>
 #include <forward_list>
 #include <type_traits>
 #include <stack>
 
-#include "concepts.hpp"
+#include "../concepts.hpp"
 
-#include "entity/IEntity.hpp"
-#include "manager/IManager.hpp"
+#include "../entity/IEntity.hpp"
+#include "../manager/IManager.hpp"
+#include "../resources/AResources.hpp"
+#include "../event/EventManager.hpp"
 
-#include "error/Error.hpp"
-#include "utils/Speech.hpp"
-
-#include "resources/AResources.hpp"
-#include "event/EventManager.hpp"
+#include "../error/Error.hpp"
+#include "../utils/Speech.hpp"
 #include "json_parser/jsnp.hpp"
 
 namespace sw
@@ -34,7 +34,18 @@ namespace sw
     class AScene
     {
 
-        public:
+        private:
+            bool m_isLoad;
+
+        protected:
+            const std::string m_name;
+
+            std::unordered_set<std::string> m_managersToDelete;
+            std::unordered_set<std::string> m_entitiesToDelete;
+
+            EventManager m_eventManager;
+            std::unique_ptr<AResources> m_resources;
+
             class ManagerMap :
                 private std::unordered_map<std::string, std::unique_ptr<IManager>>
             {
@@ -44,7 +55,7 @@ namespace sw
                     using std::unordered_map<std::string, std::unique_ptr<IManager>>::operator[];
 
                 friend AScene;
-            };
+            } m_managerMap;
 
             class EntityMap :
                 private std::unordered_map<std::string, std::unique_ptr<IEntity>>
@@ -55,7 +66,7 @@ namespace sw
                     using std::unordered_map<std::string, std::unique_ptr<IEntity>>::operator[];
 
                 friend AScene;
-            };
+            } m_entityMap;
 
             class ManagerLayer :
                 private std::forward_list<std::pair<int, std::string>>
@@ -68,25 +79,14 @@ namespace sw
                     using std::forward_list<std::pair<int, std::string>>::end;
 
                 friend AScene;
-            };
+            } m_managerLayer;
 
-        private:
-            const std::string m_name;
-            bool m_isLoad;
-
-            ManagerMap m_managerMap;
-            ManagerLayer m_managerLayer;
-
-            EntityMap m_entityMap;
-            std::stack<std::string> m_deletedEntity;
-
-            EventManager m_eventManager;
-            std::unique_ptr<AResources> m_resources;
-
-        protected:
             virtual void onLoad() = 0;
             virtual void onUpdate() = 0;
             virtual void onUnload() = 0;
+
+            void deleteRequestedEntities();
+            void deleteRequestedManagers();
 
         public:
             AScene() = delete;
@@ -97,12 +97,7 @@ namespace sw
 
             [[nodiscard]] std::string name() const;
             [[nodiscard]] bool isLoad() const;
-
-            [[nodiscard]] ManagerMap& factories();
-            [[nodiscard]] ManagerLayer& managerLayers();
-
-            [[nodiscard]] EntityMap& entities();
-            [[nodiscard]] std::stack<std::string>& deletedEntities();
+            virtual std::string type() const = 0;
 
             [[nodiscard]] sw::EventManager& eventManager();
             [[nodiscard]] std::unique_ptr<AResources>& resources();
@@ -115,7 +110,8 @@ namespace sw
             [[nodiscard]] Entity& getEntity(const std::string& entityName);
             [[nodiscard]] bool hasEntity(const std::string& entityName);
             void deleteEntity(const std::string& entityName);
-            void deleteRequestedEntity();
+            void eraseEntities();
+            std::size_t entitiesCount() const;
 
             template <ConcreteManager Manager, typename... Args>
             Manager& createManager(const std::string& managerName, Args... args);
@@ -124,7 +120,8 @@ namespace sw
             [[nodiscard]] IManager& getManager(const std::string& managerName);
             [[nodiscard]] bool hasManager(const std::string& managerName);
             void deleteManager(const std::string& managerName);
-            void eraseManager();
+            void eraseManagers();
+            std::size_t managersCount() const;
 
             void setLayer(const std::string& managerName, int layer);
             [[nodiscard]] int getLayer(const std::string managerName) const;
@@ -139,15 +136,14 @@ namespace sw
                 return (m_name == right.m_name);
             }
 
-    }; // class scene
+    }; // class AScene
 
+    std::ostream& operator<<(std::ostream& os, const AScene& scene);
+
+    #include "AScene.inl"
+    #include "entityFunction.inl"
     #include "managerFunction.inl"
 
 } // namespace sw
-
-//inline auto operator<=>(const std::pair<int, std::string>& left, const std::pair<int, std::string>& right)
-//{
-//    return (left.first <=> right.first);
-//}
 
 #endif // __SHIPWRECK_ASCENE_HPP__

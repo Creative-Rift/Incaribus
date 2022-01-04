@@ -5,21 +5,23 @@
 ** AManager.hpp
 */
 
-#ifndef __SHIPWRECK_AFACTORY_HPP__
-#define __SHIPWRECK_AFACTORY_HPP__
+#ifndef __SHIPWRECK_AMANAGER_HPP__
+#define __SHIPWRECK_AMANAGER_HPP__
 
 #include <iostream>
 #include <utility>
 #include <unordered_map>
+#include <unordered_set>
 #include <string>
 #include <memory>
 #include <type_traits>
 
 #include "IManager.hpp"
-#include "engine/Engine.hpp"
-#include "scene/AScene.hpp"
-#include "error/Error.hpp"
-#include "component/IComponent.hpp"
+#include "../scene/AScene.hpp"
+#include "../component/IComponent.hpp"
+#include "../error/Error.hpp"
+#include "../utils/Speech.hpp"
+#include "../Log.hpp"
 
 namespace sw
 {
@@ -28,6 +30,9 @@ namespace sw
     class AManager :
         public IManager
     {
+
+        private:
+            bool m_isLoad;
 
         protected:
             class Components :
@@ -40,7 +45,7 @@ namespace sw
 
                 friend AManager;
 
-            } m_componentMap;
+            } m_components;
 
             class ComponentLayer :
                 private std::forward_list<std::pair<int, std::string>>
@@ -60,9 +65,11 @@ namespace sw
             bool m_isActive;
             const std::string m_name;
 
-            bool m_isLoad;
+            std::unordered_set<std::string> m_componentToDelete;
 
             virtual void onUpdate() = 0;
+
+            void deleteRequestedComponents();
 
         public:
             AManager(const std::string& managerName, AScene& sceneRef);
@@ -72,6 +79,8 @@ namespace sw
             std::string name() const override;
             bool isActive() const override;
             void setActive(bool value) override;
+            bool isLoad() const override;
+            using IManager::type;
 
             void load() override;
             void update() override;
@@ -84,6 +93,8 @@ namespace sw
 
             bool hasComponent(const std::string& entityName) const override;
             void deleteComponent(const std::string& entityName) override;
+            void eraseComponents() override;
+            std::size_t componentsCount() const override;
 
             void setLayer(const std::string& entityName, int layer) override;
             [[nodiscard]] int getLayer(const std::string& entityName) const override;
@@ -92,13 +103,13 @@ namespace sw
             std::unordered_map<std::string, std::unique_ptr<Cpt>>::iterator end();
             Cpt& operator[](const std::string& entityName);
 
-        template <ConcreteComponent T>
-        friend std::ostream& operator<<(std::ostream& os, AManager<T>& manager);
-
     }; // class AManager
+
+    template <ConcreteComponent Cpt>
+    std::ostream& operator<<(std::ostream& os, const AManager<Cpt>& manager);
 
     #include "AManager.inl"
 
 } // namespace sw
 
-#endif // __SHIPWRECK_AFACTORY_HPP__
+#endif // __SHIPWRECK_AMANAGER_HPP__

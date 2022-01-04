@@ -282,6 +282,9 @@ namespace sw
     //
     ///////////////////////////////////////////////////////////////////////////
 
+    template <typename T>
+    std::ostream& operator<<(std::ostream& os, const Vector2<T>& vector);
+
     #include "vector2.inl"
 
 } // namespace sw

@@ -128,8 +128,8 @@ inline bool operator!=(const sw::Vector2<T>& left, const sw::Vector2<T>& right)
 }
 
 template <typename T>
-inline std::ostream& operator<<(std::ostream& os, const sw::Vector2<T>& matrix)
+std::ostream& operator<<(std::ostream& os, const sw::Vector2<T>& vector)
 {
-    os << "(" << matrix.x << ", " << matrix.y << ")";
+    os << "Vector<" << typeid(vector.x).name() << "> : [ x:" << vector.x << " , y:" << vector.y << " ]\n";
     return (os);
 }

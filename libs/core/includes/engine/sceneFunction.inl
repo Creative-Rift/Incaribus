@@ -5,35 +5,34 @@
 ** sceneFunction.inl
 */
 
-template <sw::ConcreteScene Scene>
+template <ConcreteScene Scene>
 inline Scene& sw::Engine::createScene(const std::string& sceneName)
 {
-    auto it = m_scenes.find(sceneName);
+    if (hasScene(sceneName))
+        sw::Speech::Warning(sw::Log::warning123(FUNCTION, sceneName));
 
-    if (it == m_scenes.end()) {
-        it = m_scenes.emplace(sceneName, std::make_unique<Scene>(sceneName)).first;
-        if (m_activeScene.empty())
-            m_activeScene = sceneName;
-    }
-    return (static_cast<Scene&>(*it->second.get()));
+    auto it = m_scenes.try_emplace(sceneName, std::make_unique<Scene>(sceneName));
+    if (it.second && m_activeScene.empty())
+        m_activeScene = sceneName;
+    return (static_cast<Scene&>(*(it.first->second)));
 }
 
-template <sw::ConcreteScene Scene>
+template <ConcreteScene Scene>
 inline Scene& sw::Engine::getScene(const std::string& sceneName)
+try
 {
-    auto it = m_scenes.find(sceneName);
-
-    if (it == m_scenes.end())
-        throw sw::Error("sw::Engine::getScene - Can't find scene <" + sceneName + ">", "4113");
-    return (static_cast<Scene&>(*it->second.get()));
+    return (static_cast<Scene&>(*m_scenes.at(sceneName)));
+}
+catch (std::out_of_range&) {
+    throw sw::Error(sw::Log::error113(FUNCTION, sceneName));
 }
 
-template <sw::ConcreteScene Scene>
+template <ConcreteScene Scene>
 Scene& sw::Engine::activeScene()
+try
 {
-    auto it = m_scenes.find(m_activeScene);
-
-    if (it == m_scenes.end())
-        throw sw::Error("sw::Engine::activeScene - Can't find active scene <" + m_activeScene + ">", "4113");
-    return (static_cast<Scene&>(*it->second.get()));
+    return (static_cast<Scene&>(*m_scenes.at(m_activeScene)));
+}
+catch (std::out_of_range&) {
+    throw sw::Error(sw::Log::error113(FUNCTION, m_activeScene));
 }

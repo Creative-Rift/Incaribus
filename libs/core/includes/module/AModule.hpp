@@ -10,8 +10,10 @@
 
 #include <string>
 #include <memory>
+#include <ios>
 
-#include "core/includes/resources/AResources.hpp"
+#include "../Config.hpp"
+#include "../concepts.hpp"
 
 namespace sw
 {
@@ -20,27 +22,26 @@ namespace sw
     {
 
         protected:
-            std::string m_name;
             bool m_isLoad;
 
-            virtual void onInitialize() = 0;
-            virtual void onUpdate() = 0;
-            virtual void onTerminate() = 0;
-
         public:
-            AModule(const std::string& name);
+            AModule();
             virtual ~AModule() = default;
 
-            std::string name() const;
+            bool isLoad() const;
+            [[nodiscard]] virtual std::string type() const = 0;
 
             virtual void initialize() = 0;
             virtual bool isOk() = 0;
             virtual void update() = 0;
             virtual void terminate() = 0;
-            virtual bool isDebuging() = 0;
             virtual std::unique_ptr<sw::AResources> createResourceInstance() = 0;
 
     }; // class AModule
+
+    std::ostream& operator<<(std::ostream& os, const AModule& module);
+
+    #include "AModule.inl"
 
 } // namespace sw
 

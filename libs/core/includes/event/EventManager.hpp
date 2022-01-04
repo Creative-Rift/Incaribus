@@ -6,15 +6,16 @@
 ** Description: [CHANGE]
 */
 
-#ifndef UNITESTS_EVENTMANAGER_HPP
-#define UNITESTS_EVENTMANAGER_HPP
+#ifndef __UNITESTS_EVENTMANAGER_HPP__
+#define __UNITESTS_EVENTMANAGER_HPP__
 
 #include <unordered_map>
 #include <memory>
 #include <string>
 #include <set>
 
-#include "concepts.hpp"
+#include "../concepts.hpp"
+
 #include "Event.hpp"
 
 namespace sw
@@ -43,6 +44,8 @@ namespace sw
 
     }; // class EventManager
 
+    #include "EventManager.inl"
+
 } // namespace
 
-#endif //UNITESTS_EVENTMANAGER_HPP
+#endif // __UNITESTS_EVENTMANAGER_HPP__

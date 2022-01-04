@@ -6,13 +6,14 @@
 ** Description: [CHANGE]
 */
 
-#ifndef SHIPWRECKENGINE_AEVENTLISTENER_H
-#define SHIPWRECKENGINE_AEVENTLISTENER_H
+#ifndef SHIPWRECK_AEVENTLISTENER_H
+#define SHIPWRECK_AEVENTLISTENER_H
 
 #include <functional>
 #include <string>
 
-#include "EventInfo.hpp"
+#include "../concepts.hpp"
+#include "../Config.hpp"
 
 namespace sw
 {
@@ -31,4 +32,4 @@ namespace sw
 
 }
 
-#endif //SHIPWRECKENGINE_AEVENTLISTENER_H
+#endif //SHIPWRECK_AEVENTLISTENER_H

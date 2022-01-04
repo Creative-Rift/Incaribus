@@ -5,10 +5,11 @@
 ** ScriptFact.hpp
 */
 
-#ifndef __SCRIPTFACT_H__
-#define __SCRIPTFACT_H__
+#ifndef __SHIPWRECK_SCRIPTFACT_HPP__
+#define __SHIPWRECK_SCRIPTFACT_HPP__
 
 #include "AManager.hpp"
+
 #include "../component/Component.hpp"
 
 namespace sw
@@ -24,4 +25,4 @@ namespace sw
 
 }
 
-#endif // __SCRIPTFACT_H__
+#endif // __SHIPWRECK_SCRIPTFACT_HPP__

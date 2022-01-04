@@ -12,7 +12,7 @@
 #include <iostream>
 
 #include "IComponent.hpp"
-#include "Entity.hpp"
+#include "../entity/Entity.hpp"
 
 namespace sw
 {
@@ -29,13 +29,15 @@ namespace sw
             explicit Component(Entity& entityRef);
             ~Component() = default;
 
-            void setActive(bool value);
-            [[nodiscard]] bool isActive() const;
-            [[nodiscard]] Entity& entity() const;
+            void setActive(bool value) override;
+            [[nodiscard]] bool isActive() const override;
+            [[nodiscard]] Entity& entity() const override;
+
+            using IComponent::type;
 
     }; // class Component
 
-    std::ostream& operator<<(std::ostream& os, Component& cpt);
+    std::ostream& operator<<(std::ostream& os, const Component& cpt);
 
     #include "Component.inl"
 
