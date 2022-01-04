@@ -18,6 +18,7 @@ class Main : public sw::AScene {
         void onLoad() override;
         void onUpdate() override;
         void onUnload() override;
+        std::string type() const override { return (""); }
 };
 
 #endif //INCARIBUS_MAIN_HPP

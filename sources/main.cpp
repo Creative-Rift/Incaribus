@@ -7,13 +7,14 @@
 */
 
 #include "SW/Engine.hpp"
+#include "OpenGLModule.hpp"
 
 int main()
 try
 {
-    sw::Speech::displayed = true;
-    // sw::Speech::clearOnPlay = true;
+    sw::Speech::setDisplayed(true);
 
+    sw::Engine::createModule<sw::OpenGLModule>();
     sw::Engine::initialize();
     sw::Speech::flush();
     sw::Engine::update();
