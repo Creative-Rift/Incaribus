@@ -1,14 +1,3 @@
-## CMAKE VAR
-## <=====================================>
-cmake_minimum_required( VERSION 3.17...3.20 )
-set( CMAKE_BUILD_TYPE Release ) # Release / RelWithDebInfo / Debug
-set( CMAKE_CXX_STANDARD 20 )
-set( CMAKE_CXX_STANDARD_REQUIRED True )
-set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/ )
-set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/ )
-set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/ )
-## <=====================================>
-
 
 ## PROJECT VAR
 ## <=====================================>
@@ -30,9 +19,9 @@ set( SRC_FOLDERS
         )
 ## INCLUDE FOLDERS
 set( INC_FOLDERS
-        ${CMAKE_SOURCE_DIR}/libs/
-        ${CMAKE_SOURCE_DIR}/libs/module/
-        ${CMAKE_SOURCE_DIR}/libs/core/includes
+        ${CMAKE_SOURCE_DIR}/libraries/
+        ${CMAKE_SOURCE_DIR}/libraries/module/
+        ${CMAKE_SOURCE_DIR}/libraries/core/
         ${CMAKE_SOURCE_DIR}/includes/
         ${CMAKE_SOURCE_DIR}/includes/scenes/
         )
@@ -45,10 +34,10 @@ set( SHARED_LIB_NAME
         )
 ## IMPORTED SHARED LIBRARY LOCATION
 set( SHARED_LIB_LOCATION
-        ${CMAKE_SOURCE_DIR}/libs/libJsnp.so
-        ${CMAKE_SOURCE_DIR}/libs/libSWEngine-Core.so
-        ${CMAKE_SOURCE_DIR}/libs/libSWEngine-OpenGLModule.so
-        ${CMAKE_SOURCE_DIR}/libs/libglfw.so
+        ${CMAKE_SOURCE_DIR}/libraries/libJsnp.so
+        ${CMAKE_SOURCE_DIR}/libraries/libSWEngine-Core.so
+        ${CMAKE_SOURCE_DIR}/libraries/libSWEngine-OpenGLModule.so
+        ${CMAKE_SOURCE_DIR}/libraries/libglfw.so
         )
 ## <=====================================>
 

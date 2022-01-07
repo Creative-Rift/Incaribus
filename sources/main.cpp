@@ -18,6 +18,7 @@ try
     sw::Engine::createModule<sw::OpenGLModule>();
     sw::Engine::initialize();
     sw::CreateScenes();
+    sw::Engine::activeScene().load();
     sw::Speech::flush();
     while (sw::Engine::getModule().isOk())
         sw::Engine::update();

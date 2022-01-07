@@ -10,7 +10,7 @@
 
 void Main::onLoad()
 {
-
+    std::cout << "chui chargé" << std::endl;
 }
 
 void Main::onUpdate()
