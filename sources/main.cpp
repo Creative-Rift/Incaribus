@@ -8,6 +8,7 @@
 
 #include "SW/Engine.hpp"
 #include "OpenGLModule.hpp"
+#include "Project.hpp"
 
 int main()
 try
@@ -16,8 +17,10 @@ try
 
     sw::Engine::createModule<sw::OpenGLModule>();
     sw::Engine::initialize();
+    sw::CreateScenes();
     sw::Speech::flush();
-    sw::Engine::update();
+    while (sw::Engine::getModule().isOk())
+        sw::Engine::update();
     sw::Speech::flush();
     sw::Engine::terminate();
     sw::Speech::flush();

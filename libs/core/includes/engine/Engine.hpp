@@ -60,11 +60,13 @@ namespace sw
             template <ConcreteScene Scene>
             static Scene& getScene(const std::string& sceneName);
             static AScene& getScene(const std::string& sceneName);
+            static std::unordered_map<std::string, std::unique_ptr<AScene>>& getScenes();
 
             template <ConcreteScene Scene>
             static Scene& activeScene();
             static AScene& activeScene();
             static std::string activeSceneName();
+            static void setActiveSceneName(const std::string& newSceneName);
 
             static void deleteScene(const std::string& sceneName);
             static bool hasScene(const std::string& sceneName);
@@ -88,7 +90,6 @@ namespace sw
 
     }; // class Engine
 
-    #include "Engine.inl"
     #include "moduleFunction.inl"
     #include "sceneFunction.inl"
 

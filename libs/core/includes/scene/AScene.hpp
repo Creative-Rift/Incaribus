@@ -17,6 +17,7 @@
 #include <type_traits>
 #include <stack>
 
+#include "../Config.hpp"
 #include "../concepts.hpp"
 
 #include "../entity/IEntity.hpp"
@@ -31,7 +32,7 @@
 namespace sw
 {
 
-    class AScene
+    class SW_CORE_API_EXPORT AScene
     {
 
         private:
