@@ -1,0 +1,30 @@
+{
+  "MissingTexture": {
+    "Path": "resources/textures/missing_texture.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Logo": {
+    "Path": "resources/textures/logo.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Idle": {
+    "Path": "resources/textures/idle.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Explode": {
+    "Path": "resources/textures/x.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  }
+}

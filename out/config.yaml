@@ -1,0 +1,23 @@
+Project:
+  name: "ShipWreck Project"
+  framerate: 60
+  icon: "./"
+
+Debug:
+  Colorized: true
+  Display_Console: true
+  Display_Error: true
+  Display_Warning: true
+  Display_Info: true
+  Display_Debug: true
+  ClearOnPlay: false
+
+  BlackList_Log: [ ]
+  BlackList_Executor: [ ]
+  BlackList_Action: [ ]
+  BlackList_Target: [ ]
+
+  WhiteList_Log: [ ]
+  WhiteList_Executor: [ ]
+  WhiteList_Action: [ ]
+  WhiteList_Target: [ ]

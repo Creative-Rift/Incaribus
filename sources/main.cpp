@@ -16,8 +16,8 @@ try
     sw::Speech::setDisplayed(true);
 
     sw::Engine::createModule<sw::OpenGLModule>();
-    sw::Engine::initialize();
     sw::CreateScenes();
+    sw::Engine::initialize();
     sw::Engine::activeScene().load();
     sw::Speech::flush();
     while (sw::Engine::getModule().isOk())
@@ -32,8 +32,8 @@ catch (sw::Error& error)
     sw::Speech::Error(error.getMessage(), error.getCode());
     sw::Speech::flush();
 }
-catch (...)
+catch (const std::exception& error)
 {
-    sw::Speech::Error("An unknow error occured ^^'");
+    sw::Speech::Error(error.what());
     sw::Speech::flush();
 }

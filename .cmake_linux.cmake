@@ -6,8 +6,6 @@ project( Incaribus
         0.1
         DESCRIPTION
         "Example project to test ShipWreckEngine"
-        LANGUAGES
-        CXX
         )
 set( EXEC incaribus )
 set( EXT cpp )
@@ -28,16 +26,18 @@ set( INC_FOLDERS
 ## IMPORTED SHARED LIBRARY NAME
 set( SHARED_LIB_NAME
         Jsnp
-        SWEngine-Core
+        SWEngine-Core-Debug
         SWEngine-OpenGLModule
         glfw
+        yaml-cpp
         )
 ## IMPORTED SHARED LIBRARY LOCATION
 set( SHARED_LIB_LOCATION
         ${CMAKE_SOURCE_DIR}/libraries/libJsnp.so
-        ${CMAKE_SOURCE_DIR}/libraries/libSWEngine-Core.so
+        ${CMAKE_SOURCE_DIR}/libraries/libSWEngine-Core-Debug.so
         ${CMAKE_SOURCE_DIR}/libraries/libSWEngine-OpenGLModule.so
         ${CMAKE_SOURCE_DIR}/libraries/libglfw.so
+        ${CMAKE_SOURCE_DIR}/libraries/libyaml-cpp.so
         )
 ## <=====================================>
 
