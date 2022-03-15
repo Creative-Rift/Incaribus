@@ -26,5 +26,12 @@
       "Main"
     ],
     "Type": "Texture"
+  },
+  "Background1": {
+    "Path": "resources/textures/back.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
   }
 }

@@ -11,7 +11,7 @@
 #include "module/managers/AnimatorManager.hpp"
 #include "module/managers/TransformManager.hpp"
 #include "module/managers/CameraManager.hpp"
-#include "script/Player.hpp"
+#include "script/BackgroundManager.hpp"
 
 void Main::onLoad()
 {
@@ -22,7 +22,7 @@ void Main::onLoad()
     createManager<sw::TransformManager>("TransformManager");
     createManager<sw::CameraManager>("CameraManager");
     createManager<sw::ScriptManager>("ScriptManager");
-    auto& entity = createEntity("Player");
+    auto& entity = createEntity("Background");
     auto& mainCamera = createEntity("MainCamera");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
@@ -33,7 +33,7 @@ void Main::onLoad()
     std::string foo("Explode");
 
     camera.setClippingNear(-1);
-    entity.createComponent<Player>("ScriptManager");
+    entity.createComponent<inc::BackgroundManager>("ScriptManager");
     //transform.setPosition(3, 3, 0); // Coord 2D - orthographic
     //transform.setPosition(3, 0, 3); // Coord 3D - perspective
     //sprite.setColor(sw::CyanColor);
