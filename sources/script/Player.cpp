@@ -27,15 +27,18 @@ void Player::start()
     sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
     std::string ye("Idle");
 
-    transform.setPosition(1800, 0);
+    transform.setPosition(210, 225);
     transform.scale(3.0f, 3.0f);
     sprite.setTexture(ye);
-    animator.setRect({33, 32}).setFPS(10).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
+    m_entity.setLayer("SpriteManager", 1);
+    animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
 }
 
 void Player::update()
 {
+    if (sw::Engine::activeSceneName() != "Game")
+        return;
     sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
 
     m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(2, 3);

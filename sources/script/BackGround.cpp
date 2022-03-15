@@ -9,6 +9,7 @@
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "script/Background.hpp"
+#include "SW/Engine.hpp"
 
 inc::Background::Background(sw::Entity &entity, std::string textureName) :
 sw::Component(entity),
@@ -34,7 +35,7 @@ void inc::Background::update()
     sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& sprite = m_entity.getComponent<sw::Sprite>("SpriteManager");
 
-    transform.move(-10, 0);
+    transform.move(-3, 0);
     if (-transform.getPosition().x > sprite.texture()->getWidth() * transform.getScale().x)
         transform.setPosition(sprite.texture()->getWidth() * transform.getScale().x - 10, 0);
 }

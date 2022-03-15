@@ -33,5 +33,12 @@
       "Main"
     ],
     "Type": "Texture"
+  },
+  "MapMenu": {
+    "Path": "resources/textures/MenuMap.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
   }
 }
