@@ -14,7 +14,7 @@
     "Type": "Texture"
   },
   "Idle": {
-    "Path": "resources/textures/idle.png",
+    "Path": "resources/textures/player.png",
     "Scene": [
       "Main"
     ],

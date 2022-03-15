@@ -8,7 +8,7 @@ Debug:
   Display_Console: true
   Display_Error: true
   Display_Warning: true
-  Display_Info: true
+  Display_Info: false
   Display_Debug: true
   ClearOnPlay: false
 

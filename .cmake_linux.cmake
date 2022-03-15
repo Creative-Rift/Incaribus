@@ -14,6 +14,7 @@ set( EXT cpp )
 set( SRC_FOLDERS
         ${CMAKE_SOURCE_DIR}/sources/
         ${CMAKE_SOURCE_DIR}/sources/scenes/
+        ${CMAKE_SOURCE_DIR}/sources/script/
         )
 ## INCLUDE FOLDERS
 set( INC_FOLDERS
@@ -22,6 +23,7 @@ set( INC_FOLDERS
         ${CMAKE_SOURCE_DIR}/libraries/core/
         ${CMAKE_SOURCE_DIR}/includes/
         ${CMAKE_SOURCE_DIR}/includes/scenes/
+        ${CMAKE_SOURCE_DIR}/includes/script/
         )
 ## IMPORTED SHARED LIBRARY NAME
 set( SHARED_LIB_NAME
