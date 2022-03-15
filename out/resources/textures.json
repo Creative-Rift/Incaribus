@@ -40,5 +40,12 @@
       "Main"
     ],
     "Type": "Texture"
+  },
+  "Opossum": {
+    "Path": "resources/textures/oposum.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
   }
 }

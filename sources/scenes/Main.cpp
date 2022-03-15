@@ -13,6 +13,7 @@
 #include "module/managers/CameraManager.hpp"
 #include "script/BackgroundManager.hpp"
 #include "script/Player.hpp"
+#include "script/Opossum.hpp"
 
 void Main::onLoad()
 {
@@ -27,6 +28,7 @@ void Main::onLoad()
     auto& mainCamera = createEntity("MainCamera");
     auto& menuMap = createEntity("MenuMap");
     auto& player = createEntity("Player");
+    auto& opossum = createEntity("Opossum");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
@@ -35,6 +37,7 @@ void Main::onLoad()
     mapSprite.setTexture(foo);
     mapTrans.setScale(2.5f, 2.5f);
     player.createComponent<Player>("ScriptManager");
+    opossum.createComponent<inc::Opossum>("ScriptManager");
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     camera.setClippingNear(-1);
