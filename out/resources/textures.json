@@ -47,5 +47,33 @@
       "Main"
     ],
     "Type": "Texture"
+  },
+  "Button_l": {
+    "Path": "resources/textures/button_l.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Cherry": {
+    "Path": "resources/textures/cherry.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Gem": {
+    "Path": "resources/textures/gem.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
+  },
+  "Frog": {
+    "Path": "resources/textures/frog-idle.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
   }
 }

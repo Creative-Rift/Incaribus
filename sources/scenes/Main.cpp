@@ -14,6 +14,8 @@
 #include "script/BackgroundManager.hpp"
 #include "script/Player.hpp"
 #include "script/Opossum.hpp"
+#include "script/Gem.hpp"
+#include "script/Frog.hpp"
 
 void Main::onLoad()
 {
@@ -29,6 +31,8 @@ void Main::onLoad()
     auto& menuMap = createEntity("MenuMap");
     auto& player = createEntity("Player");
     auto& opossum = createEntity("Opossum");
+    auto& gem = createEntity("Gem");
+    auto& frog = createEntity("Frog");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
@@ -38,6 +42,8 @@ void Main::onLoad()
     mapTrans.setScale(2.5f, 2.5f);
     player.createComponent<Player>("ScriptManager");
     opossum.createComponent<inc::Opossum>("ScriptManager");
+    gem.createComponent<inc::Gem>("ScriptManager");
+    frog.createComponent<inc::Frog>("ScriptManager");
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     camera.setClippingNear(-1);
