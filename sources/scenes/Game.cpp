@@ -2,11 +2,11 @@
 ** Society: Creative Rift
 ** SHIPWRECK ENGINE, 2021
 ** Author: Guillaume S.
-** File name: Main.cpp
+** File name: Game.cpp
 ** Description: [CHANGE]
 */
 
-#include "scenes/Main.hpp"
+#include "scenes/Game.hpp"
 #include "module/managers/SpriteManager.hpp"
 #include "module/managers/AnimatorManager.hpp"
 #include "module/managers/TransformManager.hpp"
@@ -14,12 +14,9 @@
 #include "script/BackgroundManager.hpp"
 #include "script/Player.hpp"
 #include "script/Opossum.hpp"
-#include "script/Gem.hpp"
-#include "script/Frog.hpp"
-#include "script/House.hpp"
-#include "OpenGLModule.hpp"
+#include "script/MapLoader.hpp"
 
-void Main::onLoad()
+void Game::onLoad()
 {
     eventManager().create("Start");
     eventManager().create("Update");
@@ -30,38 +27,25 @@ void Main::onLoad()
     createManager<sw::ScriptManager>("ScriptManager");
     auto& entity = createEntity("Background");
     auto& mainCamera = createEntity("MainCamera");
-    auto& menuMap = createEntity("MenuMap");
     auto& player = createEntity("Player");
-    auto& opossum = createEntity("Opossum");
-    auto& gem = createEntity("Gem");
-    auto& frog = createEntity("Frog");
-    auto& house = createEntity("House");
+    auto& map = createEntity("Map");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
-    sw::ConcreteComponent auto& mapTrans = menuMap.createComponent<sw::Transform>("TransformManager");
-    sw::ConcreteComponent auto& mapSprite = menuMap.createComponent<sw::Sprite>("SpriteManager");
-    mapSprite.setTexture(foo);
-    mapTrans.setScale(2.5f, 2.5f);
     player.createComponent<Player>("ScriptManager");
-    opossum.createComponent<inc::Opossum>("ScriptManager");
-    gem.createComponent<inc::Gem>("ScriptManager");
-    frog.createComponent<inc::Frog>("ScriptManager");
-    house.createComponent<inc::House>("ScriptManager");
+    map.createComponent<inc::MapLoader>("ScriptManager");
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     camera.setClippingNear(-1);
     eventManager().drop("Start");
 }
 
-void Main::onUpdate()
+void Game::onUpdate()
 {
     eventManager().drop("Update");
-    if (sw::isKeyReleased(sw::Keyboard::SPACE))
-        sw::Engine::setActiveScene("Game");
 }
 
-void Main::onUnload()
+void Game::onUnload()
 {
 
 }

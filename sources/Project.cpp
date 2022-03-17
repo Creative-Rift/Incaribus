@@ -8,9 +8,11 @@
 
 #include "SW/Engine.hpp"
 #include "scenes/Main.hpp"
+#include "scenes/Game.hpp"
 #include "Project.hpp"
 
 void sw::CreateScenes()
 {
     sw::Engine::createScene<Main>(std::string("Main"));
+    sw::Engine::createScene<Game>(std::string("Game"));
 }

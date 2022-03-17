@@ -30,7 +30,7 @@ void Player::start()
     transform.setPosition(210, 225);
     transform.scale(3.0f, 3.0f);
     sprite.setTexture(ye);
-    m_entity.setLayer("SpriteManager", 1);
+    m_entity.setLayer("SpriteManager", 3);
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
 }
