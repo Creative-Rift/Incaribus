@@ -27,6 +27,6 @@ void inc::Cherry::start()
     transform.setPosition(1400, 250);
     transform.setScale(3.0f, 3.0f);
     sprite.setTexture(ye);
-    m_entity.setLayer("SpriteManager", 1);
+    m_entity.setLayer("SpriteManager", 2);
     animator.setRect({21, 21}).setLoop(true).setFPS(8).play();
 }

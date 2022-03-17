@@ -40,13 +40,13 @@ void inc::Opossum::update()
     sw::ConcreteComponent auto& sprite = m_entity.getComponent<sw::Sprite>("SpriteManager");
 
     if (m_direction == LEFT) {
-        transform.move(-5, 0);
+        transform.move(-4, 0);
         if (transform.getPosition().x <= m_pos1.x) {
             m_direction = RIGHT;
             sprite.invertX(true);
         }
     } else {
-        transform.move(5, 0);
+        transform.move(4, 0);
         if (transform.getPosition().x >= m_pos2.x) {
             m_direction = LEFT;
             sprite.invertX(false);

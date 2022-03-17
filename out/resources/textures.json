@@ -75,5 +75,12 @@
       "Main"
     ],
     "Type": "Texture"
+  },
+  "House": {
+    "Path": "resources/textures/house.png",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Texture"
   }
 }

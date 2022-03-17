@@ -27,6 +27,6 @@ void inc::Frog::start()
     transform.setPosition(1000, 735);
     transform.setScale(2.5f, 2.5f);
     sprite.setTexture(ye);
-    m_entity.setLayer("SpriteManager", 1);
+    m_entity.setLayer("SpriteManager", 2);
     animator.setRect({35, 32}).setLoop(true, 5).setFPS(6).play();
 }
