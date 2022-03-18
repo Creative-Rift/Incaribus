@@ -6,8 +6,6 @@
 ** Description: [CHANGE]
 */
 
-#include "includes/event/EventInfo.hpp"
-
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"
@@ -41,7 +39,7 @@ void Player::start()
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
     collision.setSize(33 * 3, 32 * 3);
-    rigidbody.setMass(1);
+    rigidbody.setMass(0.7);
     if (sw::Engine::activeSceneName() != "Game")
         rigidbody.setActive(false);
 }
@@ -71,4 +69,14 @@ void Player::update()
     if (sw::isKeyDown(sw::Keyboard::SPACE))
         move.y = -700;
     velocity.setVelocity(move);
+
+    auto& camera = m_entity.scene().getEntity("MainCamera");
+    auto& transformCam = camera.getComponent<sw::Transform>("TransformManager");
+
+    if (transformCam.getPosition().x > -1100 && transform.getPosition().x > -transformCam.getPosition().x + 1200) {
+        transformCam.move(-7, 0);
+    }
+    if (transformCam.getPosition().x < 0 && transform.getPosition().x < -transformCam.getPosition().x + 800)
+        transformCam.move(7, 0);
+
 }

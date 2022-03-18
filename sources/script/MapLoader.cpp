@@ -57,7 +57,7 @@ void inc::MapLoader::loadMap(std::string mapPath)
             newSprite.setTexture(tileSet);
             newSprite.setTextureRect(rect);
             newEntity.setLayer("SpriteManager", 1);
-            if (s != "178" && s != "176") {
+            if (s != "178" && s != "176" && s != "454") {
                 sw::ConcreteComponent auto& newCollider = newEntity.createComponent<sw::BoxCollider>("BoxColliderManager");
                 newCollider.setSize(16 * 3, 16 * 3);
                 newCollider.setStatic(true);
