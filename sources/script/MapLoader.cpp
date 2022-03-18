@@ -11,6 +11,7 @@
 
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
+#include "components/BoxCollider.hpp"
 #include "script/MapLoader.hpp"
 
 inc::MapLoader::MapLoader(sw::Entity &entity, std::string mapPath) :
@@ -47,19 +48,22 @@ void inc::MapLoader::loadMap(std::string mapPath)
                 x++;
                 continue;
             }
-            std::cout << s << " ";
             sw::FloatRect rect{16 * (float)(std::atoi(s.c_str()) % 25), 368 - 16 * (float)(std::atoi(s.c_str()) / 25 + 1), 16, 16};
             auto& newEntity = m_entity.scene().createEntity("Tile-" + std::to_string(x) + "-" + std::to_string(y));
             sw::ConcreteComponent auto& newTransform = newEntity.createComponent<sw::Transform>("TransformManager");
             sw::ConcreteComponent auto& newSprite = newEntity.createComponent<sw::Sprite>("SpriteManager");
             newTransform.setScale(3, 3);
-            newTransform.setPosition(x * 16 * 3, y * 16 * 3 + 350);
+            newTransform.setPosition(x * 16 * 3, y * 16 * 3 + 250);
             newSprite.setTexture(tileSet);
             newSprite.setTextureRect(rect);
             newEntity.setLayer("SpriteManager", 1);
+            if (s != "178" && s != "176") {
+                sw::ConcreteComponent auto& newCollider = newEntity.createComponent<sw::BoxCollider>("BoxColliderManager");
+                newCollider.setSize(16 * 3, 16 * 3);
+                newCollider.setStatic(true);
+            }
             x++;
         }
-        std::cout << std::endl;
         x = 0;
         y++;
     }

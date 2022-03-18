@@ -6,9 +6,14 @@
 ** Description: [CHANGE]
 */
 
+#include "includes/event/EventInfo.hpp"
+
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"
+#include "components/BoxCollider.hpp"
+#include "components/RigidBody2D.hpp"
+#include "event/EventCollision.hpp"
 
 #include "script/Player.hpp"
 #include "OpenGLModule.hpp"
@@ -25,6 +30,8 @@ void Player::start()
     sw::ConcreteComponent auto& sprite = m_entity.createComponent<sw::Sprite>("SpriteManager");
     sw::ConcreteComponent auto& animator = m_entity.createComponent<sw::Animator>("AnimatorManager");
     sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& collision = m_entity.createComponent<sw::BoxCollider>("BoxColliderManager");
+    sw::ConcreteComponent auto& rigidbody = m_entity.createComponent<sw::RigidBody2D>("RigidBody2DManager");
     std::string ye("Idle");
 
     transform.setPosition(210, 225);
@@ -33,6 +40,10 @@ void Player::start()
     m_entity.setLayer("SpriteManager", 3);
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
+    collision.setSize(33 * 3, 32 * 3);
+    rigidbody.setMass(1);
+    if (sw::Engine::activeSceneName() != "Game")
+        rigidbody.setActive(false);
 }
 
 void Player::update()
@@ -40,16 +51,24 @@ void Player::update()
     if (sw::Engine::activeSceneName() != "Game")
         return;
     sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& velocity = m_entity.getComponent<sw::RigidBody2D>("RigidBody2DManager");
+    sw::Vector2f move{0, velocity.getVelocity().y};
+    if (sw::isKeyDown(sw::Keyboard::R))
+        transform.setPosition(210, 225);
 
     m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(2, 3);
     if (sw::isKeyDown(sw::Keyboard::A)) {
         m_entity.getComponent<sw::Sprite>("SpriteManager").invertX(true);
-        transform.move(-4, 0);
+
+        move.x = -4;
         m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(3);
     }
     if (sw::isKeyDown(sw::Keyboard::D)) {
         m_entity.getComponent<sw::Sprite>("SpriteManager").invertX(false);
-        transform.move(4, 0);
+        move.x = 4;
         m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(3);
     }
+    if (sw::isKeyDown(sw::Keyboard::SPACE))
+        move.y = -700;
+    velocity.setVelocity(move);
 }

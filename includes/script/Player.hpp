@@ -10,11 +10,12 @@
 #define INCARIBUS_PLAYER_HPP
 
 #include "SW/Component.hpp"
+#include "event/EventCollision.hpp"
 
 class Player : public sw::Component
 {
     public:
-        Player(sw::Entity& entity);
+        explicit Player(sw::Entity& entity);
         void start();
         void update();
 

@@ -6,11 +6,14 @@
 ** Description: [CHANGE]
 */
 
+#include "includes/manager/ScriptManager.hpp"
 #include "scenes/Main.hpp"
 #include "module/managers/SpriteManager.hpp"
 #include "module/managers/AnimatorManager.hpp"
 #include "module/managers/TransformManager.hpp"
 #include "module/managers/CameraManager.hpp"
+#include "module/managers/BoxColliderManager.hpp"
+#include "module/managers/RigidBody2DManager.hpp"
 #include "script/BackgroundManager.hpp"
 #include "script/Player.hpp"
 #include "script/Opossum.hpp"
@@ -23,11 +26,14 @@ void Main::onLoad()
 {
     eventManager().create("Start");
     eventManager().create("Update");
+    eventManager().create("Collision");
     createManager<sw::SpriteManager>("SpriteManager");
     createManager<sw::AnimatorManager>("AnimatorManager");
     createManager<sw::TransformManager>("TransformManager");
     createManager<sw::CameraManager>("CameraManager");
     createManager<sw::ScriptManager>("ScriptManager");
+    createManager<sw::BoxColliderManager>("BoxColliderManager");
+    createManager<sw::RigidBody2DManager>("RigidBody2DManager");
     auto& entity = createEntity("Background");
     auto& mainCamera = createEntity("MainCamera");
     auto& menuMap = createEntity("MenuMap");
