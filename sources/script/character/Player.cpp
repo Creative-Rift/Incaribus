@@ -79,7 +79,6 @@ void Player::update()
     if (transformCam.getPosition().x > 0 && transform.getPosition().x < transformCam.getPosition().x + 900)
         transformCam.move(-7, 0);
 
-    std::cout << velocity.getVelocity().y << std::endl;
     if (velocity.getVelocity().y > 0)
         anim.setLine(1, 0);
     if (velocity.getVelocity().y < 0)
