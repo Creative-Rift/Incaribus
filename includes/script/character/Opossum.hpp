@@ -17,14 +17,15 @@ namespace inc
     class Opossum : public sw::Component
     {
         private:
-            sw::Vector2f m_pos1;
-            sw::Vector2f m_pos2;
             enum Direction {
                 LEFT,
                 RIGHT
             } m_direction;
 
         public:
+            sw::Vector2f m_pos1;
+            sw::Vector2f m_pos2;
+
             explicit Opossum(sw::Entity& entity);
             void start();
             void update();

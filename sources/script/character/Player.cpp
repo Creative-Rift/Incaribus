@@ -50,6 +50,7 @@ void Player::update()
         return;
     sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& velocity = m_entity.getComponent<sw::RigidBody2D>("RigidBody2DManager");
+    sw::ConcreteComponent auto& anim = m_entity.getComponent<sw::Animator>("AnimatorManager");
     sw::Vector2f move{0, velocity.getVelocity().y};
     if (sw::isKeyDown(sw::Keyboard::R))
         transform.setPosition(210, 225);
@@ -73,9 +74,14 @@ void Player::update()
     auto& camera = m_entity.scene().getEntity("MainCamera");
     auto& transformCam = camera.getComponent<sw::Transform>("TransformManager");
 
-    if (transformCam.getPosition().x < 1100 && transform.getPosition().x > transformCam.getPosition().x + 1200)
+    if (transformCam.getPosition().x < 1100 && transform.getPosition().x > transformCam.getPosition().x + 1000)
         transformCam.move(7, 0);
-    if (transformCam.getPosition().x > 0 && transform.getPosition().x < transformCam.getPosition().x + 800)
+    if (transformCam.getPosition().x > 0 && transform.getPosition().x < transformCam.getPosition().x + 900)
         transformCam.move(-7, 0);
 
+    std::cout << velocity.getVelocity().y << std::endl;
+    if (velocity.getVelocity().y > 0)
+        anim.setLine(1, 0);
+    if (velocity.getVelocity().y < 0)
+        anim.setLine(0, 0);
 }

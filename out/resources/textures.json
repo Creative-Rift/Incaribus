@@ -47,7 +47,8 @@
   "Opossum": {
     "Path": "resources/textures/oposum.png",
     "Scene": [
-      "Main"
+      "Main",
+      "Game"
     ],
     "Type": "Texture"
   },
@@ -68,14 +69,16 @@
   "Gem": {
     "Path": "resources/textures/gem.png",
     "Scene": [
-      "Main"
+      "Main",
+      "Game"
     ],
     "Type": "Texture"
   },
   "Frog": {
     "Path": "resources/textures/frog-idle.png",
     "Scene": [
-      "Main"
+      "Main",
+      "Game"
     ],
     "Type": "Texture"
   },

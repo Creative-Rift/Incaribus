@@ -17,6 +17,9 @@
 #include "script/BackgroundManager.hpp"
 #include "script/character/Player.hpp"
 #include "script/MapLoader.hpp"
+#include "script/props/Gem.hpp"
+#include "script/character/Frog.hpp"
+#include "script/character/Opossum.hpp"
 
 void Game::onLoad()
 {
@@ -35,16 +38,37 @@ void Game::onLoad()
     auto& mainCamera = createEntity("MainCamera");
     auto& player = createEntity("Player");
     auto& map = createEntity("Map");
+    auto& gem1 = createEntity("Gem1");
+    auto& gem2 = createEntity("Gem2");
+    auto& gem3 = createEntity("Gem3");
+    auto& frog1 = createEntity("Frog1");
+    auto& frog2 = createEntity("Frog2");
+    auto& opossum = createEntity("Opossum");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
     player.createComponent<Player>("ScriptManager");
     map.createComponent<inc::MapLoader>("ScriptManager");
 
+    gem1.createComponent<inc::Gem>("ScriptManager");
+    gem2.createComponent<inc::Gem>("ScriptManager");
+    gem3.createComponent<inc::Gem>("ScriptManager");
+    frog1.createComponent<inc::Frog>("ScriptManager");
+    frog2.createComponent<inc::Frog>("ScriptManager");
+    opossum.createComponent<inc::Opossum>("ScriptManager");
+
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
     eventManager().drop("Start");
+    gem1.getComponent<sw::Transform>("TransformManager").setPosition(1000, 550);
+    gem2.getComponent<sw::Transform>("TransformManager").setPosition(1450, 830);
+    gem3.getComponent<sw::Transform>("TransformManager").setPosition(2600, 780);
+    frog1.getComponent<sw::Transform>("TransformManager").setPosition(830, 518);
+    frog2.getComponent<sw::Transform>("TransformManager").setPosition(2800, 858);
+    opossum.getComponent<sw::Transform>("TransformManager").setPosition(2800, 180);
+    opossum.getComponent<inc::Opossum>("ScriptManager").m_pos1 = {2000, 180};
+    opossum.getComponent<inc::Opossum>("ScriptManager").m_pos2 = {3000, 180};
 }
 
 void Game::onUpdate()
