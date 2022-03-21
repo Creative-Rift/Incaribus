@@ -53,11 +53,11 @@ void inc::MapLoader::loadMap(std::string mapPath)
             sw::ConcreteComponent auto& newTransform = newEntity.createComponent<sw::Transform>("TransformManager");
             sw::ConcreteComponent auto& newSprite = newEntity.createComponent<sw::Sprite>("SpriteManager");
             newTransform.setScale(3, 3);
-            newTransform.setPosition(x * 16 * 3, y * 16 * 3 + 250);
+            newTransform.setPosition(x * 16 * 3 - 16 * 3, y * 16 * 3 + 250);
             newSprite.setTexture(tileSet);
             newSprite.setTextureRect(rect);
             newEntity.setLayer("SpriteManager", 1);
-            if (s != "178" && s != "176" && s != "454") {
+            if (s == "28" || s == "469" || s == "26" || s == "30" || s == "365" || s == "367" || s == "369" || s == "332" || s == "334" || s == "336" || s == "338" || s == "126") {
                 sw::ConcreteComponent auto& newCollider = newEntity.createComponent<sw::BoxCollider>("BoxColliderManager");
                 newCollider.setSize(16 * 3, 16 * 3);
                 newCollider.setStatic(true);
