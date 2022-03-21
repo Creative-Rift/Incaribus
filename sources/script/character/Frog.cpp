@@ -6,7 +6,7 @@
 ** Description: [CHANGE]
 */
 
-#include "script/Frog.hpp"
+#include "script/character/Frog.hpp"
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"

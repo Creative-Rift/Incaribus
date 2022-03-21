@@ -34,8 +34,9 @@ void inc::Background::update()
 {
     sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& sprite = m_entity.getComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& camTransform = m_entity.scene().getEntity("MainCamera").getComponent<sw::Transform>("TransformManager");
 
     transform.move(-3, 0);
-    if (-transform.getPosition().x > sprite.texture()->getWidth() * transform.getScale().x)
-        transform.setPosition(sprite.texture()->getWidth() * transform.getScale().x - 10, 0);
+    if (camTransform.getPosition().x - transform.getPosition().x > sprite.texture()->getWidth() * transform.getScale().x)
+        transform.setPosition(camTransform.getPosition().x + sprite.texture()->getWidth() * transform.getScale().x - 10, 0);
 }

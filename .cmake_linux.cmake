@@ -15,6 +15,8 @@ set( SRC_FOLDERS
         ${CMAKE_SOURCE_DIR}/sources/
         ${CMAKE_SOURCE_DIR}/sources/scenes/
         ${CMAKE_SOURCE_DIR}/sources/script/
+        ${CMAKE_SOURCE_DIR}/sources/script/props/
+        ${CMAKE_SOURCE_DIR}/sources/script/character/
         )
 ## INCLUDE FOLDERS
 set( INC_FOLDERS
@@ -24,6 +26,8 @@ set( INC_FOLDERS
         ${CMAKE_SOURCE_DIR}/includes/
         ${CMAKE_SOURCE_DIR}/includes/scenes/
         ${CMAKE_SOURCE_DIR}/includes/script/
+        ${CMAKE_SOURCE_DIR}/includes/script/props/
+        ${CMAKE_SOURCE_DIR}/includes/script/character/
         )
 ## IMPORTED SHARED LIBRARY NAME
 set( SHARED_LIB_NAME

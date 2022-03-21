@@ -35,5 +35,6 @@ void inc::BackgroundManager::createLayer(std::string layer)
 
     layer1.createComponent<inc::Background>("ScriptManager", "Background1").start();
     layer2.createComponent<inc::Background>("ScriptManager", "Background1").start();
-
+    m_entity.addChild(layer1.name());
+    m_entity.addChild(layer2.name());
 }

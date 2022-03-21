@@ -6,7 +6,7 @@
 ** Description: [CHANGE]
 */
 
-#include "script/Opossum.hpp"
+#include "script/character/Opossum.hpp"
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"

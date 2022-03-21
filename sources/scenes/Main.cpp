@@ -15,11 +15,11 @@
 #include "module/managers/BoxColliderManager.hpp"
 #include "module/managers/RigidBody2DManager.hpp"
 #include "script/BackgroundManager.hpp"
-#include "script/Player.hpp"
-#include "script/Opossum.hpp"
-#include "script/Gem.hpp"
-#include "script/Frog.hpp"
-#include "script/House.hpp"
+#include "script/character/Player.hpp"
+#include "script/character/Opossum.hpp"
+#include "script/props/Gem.hpp"
+#include "script/character/Frog.hpp"
+#include "script/props/House.hpp"
 #include "OpenGLModule.hpp"
 
 void Main::onLoad()

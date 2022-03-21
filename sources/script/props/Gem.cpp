@@ -6,27 +6,27 @@
 ** Description: [CHANGE]
 */
 
-#include "script/Cherry.hpp"
+#include "script/props/Gem.hpp"
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"
 
-inc::Cherry::Cherry(sw::Entity &entity) :
+inc::Gem::Gem(sw::Entity &entity) :
 sw::Component(entity)
 {
-    entity.scene().eventManager()["Start"].subscribe(this, &inc::Cherry::start);
+    entity.scene().eventManager()["Start"].subscribe(this, &inc::Gem::start);
 }
 
-void inc::Cherry::start()
+void inc::Gem::start()
 {
     sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& sprite = m_entity.createComponent<sw::Sprite>("SpriteManager");
     sw::ConcreteComponent auto& animator = m_entity.createComponent<sw::Animator>("AnimatorManager");
-    std::string ye("Cherry");
+    std::string ye("Gem");
 
-    transform.setPosition(1400, 250);
-    transform.setScale(3.0f, 3.0f);
+    transform.setPosition(1300, 760);
+    transform.setScale(2.5f, 2.5);
     sprite.setTexture(ye);
     m_entity.setLayer("SpriteManager", 2);
-    animator.setRect({21, 21}).setLoop(true).setFPS(8).play();
+    animator.setRect({15, 13}).setLoop(true).setFPS(8).play();
 }

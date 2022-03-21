@@ -13,7 +13,7 @@
 #include "components/RigidBody2D.hpp"
 #include "event/EventCollision.hpp"
 
-#include "script/Player.hpp"
+#include "script/character/Player.hpp"
 #include "OpenGLModule.hpp"
 
 Player::Player(sw::Entity &entity) :
@@ -73,10 +73,9 @@ void Player::update()
     auto& camera = m_entity.scene().getEntity("MainCamera");
     auto& transformCam = camera.getComponent<sw::Transform>("TransformManager");
 
-    if (transformCam.getPosition().x > -1100 && transform.getPosition().x > -transformCam.getPosition().x + 1200) {
-        transformCam.move(-7, 0);
-    }
-    if (transformCam.getPosition().x < 0 && transform.getPosition().x < -transformCam.getPosition().x + 800)
+    if (transformCam.getPosition().x < 1100 && transform.getPosition().x > transformCam.getPosition().x + 1200)
         transformCam.move(7, 0);
+    if (transformCam.getPosition().x > 0 && transform.getPosition().x < transformCam.getPosition().x + 800)
+        transformCam.move(-7, 0);
 
 }

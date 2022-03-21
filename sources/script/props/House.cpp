@@ -6,7 +6,7 @@
 ** Description: [CHANGE]
 */
 
-#include "script/House.hpp"
+#include "script/props/House.hpp"
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 

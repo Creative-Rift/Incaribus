@@ -15,7 +15,7 @@
 #include "module/managers/RigidBody2DManager.hpp"
 #include "module/managers/BoxColliderManager.hpp"
 #include "script/BackgroundManager.hpp"
-#include "script/Player.hpp"
+#include "script/character/Player.hpp"
 #include "script/MapLoader.hpp"
 
 void Game::onLoad()
@@ -42,6 +42,7 @@ void Game::onLoad()
     map.createComponent<inc::MapLoader>("ScriptManager");
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
+    mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
     eventManager().drop("Start");
 }
