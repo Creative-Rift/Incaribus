@@ -97,5 +97,19 @@
       "Game"
     ],
     "Type": "Texture"
+  },
+  "DefaultFont": {
+    "Path": "resources/font/calibri-regular.ttf",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Font"
+  },
+  "Pixel": {
+    "Path": "resources/font/AEXKON_Regular.ttf",
+    "Scene": [
+      "Main"
+    ],
+    "Type": "Font"
   }
 }

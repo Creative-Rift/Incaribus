@@ -73,6 +73,8 @@ add_executable(${EXEC} ${SRC})
 ## ADD INCLUDES
 ## <=====================================>
 target_include_directories(${EXEC} PRIVATE ${INC_FOLDERS})
+include_directories (/usr/include/freetype2)
+target_link_libraries(${EXEC} PUBLIC ${FT})
 ## <=====================================>
 
 ## ADD PARAMETER

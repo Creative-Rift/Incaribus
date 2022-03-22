@@ -67,7 +67,7 @@ void Player::update()
         move.x = 4;
         m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(3);
     }
-    if (sw::isKeyDown(sw::Keyboard::SPACE))
+    if (sw::isKeyDown(sw::Keyboard::SPACE) && velocity.getVelocity().y == 0)
         move.y = -700;
     velocity.setVelocity(move);
 
