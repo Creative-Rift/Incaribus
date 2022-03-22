@@ -7,16 +7,21 @@
 */
 
 #include "SW/Engine.hpp"
+#include "OpenGLModule.hpp"
+#include "Project.hpp"
 
 int main()
 try
 {
-    sw::Speech::displayed = true;
-    // sw::Speech::clearOnPlay = true;
+    sw::Speech::setDisplayed(true);
 
+    sw::Engine::createModule<sw::OpenGLModule>();
+    sw::CreateScenes();
     sw::Engine::initialize();
+    sw::Engine::activeScene().load();
     sw::Speech::flush();
-    sw::Engine::update();
+    while (sw::Engine::getModule().isOk())
+        sw::Engine::update();
     sw::Speech::flush();
     sw::Engine::terminate();
     sw::Speech::flush();
@@ -27,8 +32,8 @@ catch (sw::Error& error)
     sw::Speech::Error(error.getMessage(), error.getCode());
     sw::Speech::flush();
 }
-catch (...)
+catch (const std::exception& error)
 {
-    sw::Speech::Error("An unknow error occured ^^'");
+    sw::Speech::Error(error.what());
     sw::Speech::flush();
 }
