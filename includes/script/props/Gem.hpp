@@ -11,6 +11,7 @@
 
 #include "SW/Component.hpp"
 #include "SW/Utils.hpp"
+#include "includes/event/EventInfo.hpp"
 
 namespace inc
 {
@@ -19,6 +20,7 @@ namespace inc
         public:
             explicit Gem(sw::Entity& entity);
             void start();
+            void onCollide(sw::EventInfo& info);
     }; // class Cherry
 } //namespace inc
 

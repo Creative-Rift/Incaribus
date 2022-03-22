@@ -39,7 +39,7 @@ void Player::start()
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
     collision.setSize(33 * 3, 32 * 3);
-    rigidbody.setMass(0.7);
+    rigidbody.setMass(0.75);
     if (sw::Engine::activeSceneName() != "Game")
         rigidbody.setActive(false);
 }

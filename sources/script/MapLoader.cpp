@@ -61,6 +61,7 @@ void inc::MapLoader::loadMap(std::string mapPath)
                 sw::ConcreteComponent auto& newCollider = newEntity.createComponent<sw::BoxCollider>("BoxColliderManager");
                 newCollider.setSize(16 * 3, 16 * 3);
                 newCollider.setStatic(true);
+                newCollider.setTrigger(false);
             }
             x++;
         }
