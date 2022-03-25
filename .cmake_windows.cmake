@@ -6,8 +6,6 @@ project( Incaribus
         0.1
         DESCRIPTION
         "Example project to test ShipWreckEngine"
-        LANGUAGES
-        CXX
         )
 set( EXEC incaribus )
 set( EXT cpp )
@@ -16,35 +14,45 @@ set( EXT cpp )
 set( SRC_FOLDERS
         ${CMAKE_SOURCE_DIR}/sources/
         ${CMAKE_SOURCE_DIR}/sources/scenes/
+        ${CMAKE_SOURCE_DIR}/sources/script/
+        ${CMAKE_SOURCE_DIR}/sources/script/props/
+        ${CMAKE_SOURCE_DIR}/sources/script/character/
         )
 ## INCLUDE FOLDERS
 set( INC_FOLDERS
-        ${CMAKE_SOURCE_DIR}/libs/
-        ${CMAKE_SOURCE_DIR}/libs/module/opengl/
-        ${CMAKE_SOURCE_DIR}/libs/core/includes/
+        ${CMAKE_SOURCE_DIR}/libraries/
+        ${CMAKE_SOURCE_DIR}/libraries/module/
+        ${CMAKE_SOURCE_DIR}/libraries/core/
+        ${CMAKE_SOURCE_DIR}/libraries/freetype/
         ${CMAKE_SOURCE_DIR}/includes/
         ${CMAKE_SOURCE_DIR}/includes/scenes/
+        ${CMAKE_SOURCE_DIR}/includes/script/
+        ${CMAKE_SOURCE_DIR}/includes/script/props/
+        ${CMAKE_SOURCE_DIR}/includes/script/character/
         )
 ## IMPORTED SHARED LIBRARY NAME
 set( SHARED_LIB_NAME
         Jsnp
         SWEngine-Core
         SWEngine-OpenGLModule
-        glfw3
+        glfw
+        yaml-cppd
         )
 ## IMPORTED SHARED LIBRARY LOCATION
 set( SHARED_LIB_LOCATION
-        ${CMAKE_SOURCE_DIR}/libs/Jsnp.dll
-        ${CMAKE_SOURCE_DIR}/libs/SWEngine-Core.dll
-        ${CMAKE_SOURCE_DIR}/libs/SWEngine-OpenGLModule.dll
-        ${CMAKE_SOURCE_DIR}/libs/glfw3.dll
+        ${CMAKE_SOURCE_DIR}/libraries/Jsnp.dll
+        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-Core.dll
+        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-OpenGLModule.dll
+        ${CMAKE_SOURCE_DIR}/libraries/glfw3.dll
+        ${CMAKE_SOURCE_DIR}/libraries/yaml-cppd.dll
         )
 ## IMPORTED SHARED LIBRARY lib file
 set( SHARED_LIB
-        ${CMAKE_SOURCE_DIR}/libs/Jsnp.lib
-        ${CMAKE_SOURCE_DIR}/libs/SWEngine-Core.lib
-        ${CMAKE_SOURCE_DIR}/libs/SWEngine-OpenGLModule.lib
-        ${CMAKE_SOURCE_DIR}/libs/glfw3.lib
+        ${CMAKE_SOURCE_DIR}/libraries/Jsnp.lib
+        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-Core.lib
+        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-OpenGLModule.lib
+        ${CMAKE_SOURCE_DIR}/libraries/glfw3.lib
+        ${CMAKE_SOURCE_DIR}/libraries/yaml-cppd.lib
         )
 ## <=====================================>
 

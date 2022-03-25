@@ -52,8 +52,13 @@ void Player::update()
     sw::ConcreteComponent auto& velocity = m_entity.getComponent<sw::RigidBody2D>("RigidBody2DManager");
     sw::ConcreteComponent auto& anim = m_entity.getComponent<sw::Animator>("AnimatorManager");
     sw::Vector2f move{0, velocity.getVelocity().y};
-    if (sw::isKeyDown(sw::Keyboard::R))
+    std::cout << transform.getPosition().y << std::endl;
+    if (sw::isKeyDown(sw::Keyboard::R)) {
         transform.setPosition(210, 225);
+        velocity.setVelocity({0, 0});
+        move.x = 0;
+        move.y = 0;
+    }
 
     m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(2, 3);
     if (sw::isKeyDown(sw::Keyboard::A)) {
