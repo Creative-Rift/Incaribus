@@ -43,13 +43,13 @@ void inc::Opossum::update()
         transform.move(-4, 0);
         if (transform.getPosition().x <= m_pos1.x) {
             m_direction = RIGHT;
-            sprite.invertX(true);
+            sprite.flipOnX(true);
         }
     } else {
         transform.move(4, 0);
         if (transform.getPosition().x >= m_pos2.x) {
             m_direction = LEFT;
-            sprite.invertX(false);
+            sprite.flipOnX(false);
         }
     }
 }

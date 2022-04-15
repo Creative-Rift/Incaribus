@@ -20,11 +20,11 @@
 #include "script/props/Gem.hpp"
 #include "script/character/Frog.hpp"
 #include "script/character/Opossum.hpp"
+#include "SW/Engine.hpp"
+#include "OpenGLModule.hpp"
 
 void Game::onLoad()
 {
-    eventManager().create("Start");
-    eventManager().create("Update");
     eventManager().create("Collision");
     createManager<sw::SpriteManager>("SpriteManager");
     createManager<sw::AnimatorManager>("AnimatorManager");

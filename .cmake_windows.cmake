@@ -1,58 +1,41 @@
-
-## PROJECT VAR
-## <=====================================>
-project( Incaribus
-        VERSION
-        0.1
-        DESCRIPTION
-        "Example project to test ShipWreckEngine"
-        )
 set( EXEC incaribus )
 set( EXT cpp )
 
-## SOURCE FOLDERS
-set( SRC_FOLDERS
-        ${CMAKE_SOURCE_DIR}/sources/
-        ${CMAKE_SOURCE_DIR}/sources/scenes/
-        ${CMAKE_SOURCE_DIR}/sources/script/
-        ${CMAKE_SOURCE_DIR}/sources/script/props/
-        ${CMAKE_SOURCE_DIR}/sources/script/character/
-        )
-## INCLUDE FOLDERS
-set( INC_FOLDERS
-        ${CMAKE_SOURCE_DIR}/libraries/
-        ${CMAKE_SOURCE_DIR}/libraries/module/
-        ${CMAKE_SOURCE_DIR}/libraries/core/
-        ${CMAKE_SOURCE_DIR}/libraries/freetype/
-        ${CMAKE_SOURCE_DIR}/includes/
-        ${CMAKE_SOURCE_DIR}/includes/scenes/
-        ${CMAKE_SOURCE_DIR}/includes/script/
-        ${CMAKE_SOURCE_DIR}/includes/script/props/
-        ${CMAKE_SOURCE_DIR}/includes/script/character/
-        )
 ## IMPORTED SHARED LIBRARY NAME
 set( SHARED_LIB_NAME
         Jsnp
         SWEngine-Core
         SWEngine-OpenGLModule
         glfw
-        yaml-cppd
+        yaml-cpp
+        sndfile
+        freetype
         )
+if (${CMAKE_BUILD_TYPE} STREQUAL Debug)
+    set(DEBUG_SUFFIX "d")
+else()
+    set(DEBUG_SUFFIX "")
+endif()
+
 ## IMPORTED SHARED LIBRARY LOCATION
 set( SHARED_LIB_LOCATION
-        ${CMAKE_SOURCE_DIR}/libraries/Jsnp.dll
-        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-Core.dll
-        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-OpenGLModule.dll
-        ${CMAKE_SOURCE_DIR}/libraries/glfw3.dll
-        ${CMAKE_SOURCE_DIR}/libraries/yaml-cppd.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/Jsnp.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/SWEngine-Core${DEBUG_SUFFIX}.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/SWEngine-OpenGLModule${DEBUG_SUFFIX}.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/glfw3.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/yaml-cpp${DEBUG_SUFFIX}.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/sndfile.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/freetype.dll
         )
 ## IMPORTED SHARED LIBRARY lib file
 set( SHARED_LIB
-        ${CMAKE_SOURCE_DIR}/libraries/Jsnp.lib
-        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-Core.lib
-        ${CMAKE_SOURCE_DIR}/libraries/SWEngine-OpenGLModule.lib
-        ${CMAKE_SOURCE_DIR}/libraries/glfw3.lib
-        ${CMAKE_SOURCE_DIR}/libraries/yaml-cppd.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/Jsnp.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/SWEngine-Core${DEBUG_SUFFIX}.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/SWEngine-OpenGLModule${DEBUG_SUFFIX}.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/glfw3.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/yaml-cpp${DEBUG_SUFFIX}.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/sndfile.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/freetype.lib
         )
 ## <=====================================>
 
@@ -102,7 +85,7 @@ foreach(ctr RANGE ${LIST_LEN})
     list(GET SHARED_LIB_LOCATION ${ctr} loc)
     list(GET SHARED_LIB ${ctr} filelib)
     add_library(${lib} SHARED IMPORTED)
-    file(COPY ${loc} DESTINATION ${CMAKE_SOURCE_DIR}/out/)
+    file(COPY ${loc} DESTINATION ${CMAKE_SOURCE_DIR}/out/${CMAKE_BUILD_TYPE}/)
     set_target_properties(${lib} PROPERTIES
             IMPORTED_LOCATION ${loc}
             IMPORTED_IMPLIB ${filelib}

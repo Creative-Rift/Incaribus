@@ -61,13 +61,13 @@ void Player::update()
 
     m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(2, 3);
     if (sw::isKeyDown(sw::Keyboard::A)) {
-        m_entity.getComponent<sw::Sprite>("SpriteManager").invertX(true);
+        m_entity.getComponent<sw::Sprite>("SpriteManager").flipOnX(true);
 
         move.x = -4;
         m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(3);
     }
     if (sw::isKeyDown(sw::Keyboard::D)) {
-        m_entity.getComponent<sw::Sprite>("SpriteManager").invertX(false);
+        m_entity.getComponent<sw::Sprite>("SpriteManager").flipOnX(false);
         move.x = 4;
         m_entity.getComponent<sw::Animator>("AnimatorManager").setLine(3);
     }

@@ -15,6 +15,7 @@
 #include "module/managers/BoxColliderManager.hpp"
 #include "module/managers/RigidBody2DManager.hpp"
 #include "module/managers/TextManager.hpp"
+#include "module/managers/AudioSourceManager.hpp"
 #include "script/BackgroundManager.hpp"
 #include "script/character/Player.hpp"
 #include "script/character/Opossum.hpp"
@@ -25,8 +26,6 @@
 
 void Main::onLoad()
 {
-    eventManager().create("Start");
-    eventManager().create("Update");
     eventManager().create("Collision");
     createManager<sw::SpriteManager>("SpriteManager");
     createManager<sw::AnimatorManager>("AnimatorManager");
@@ -36,6 +35,7 @@ void Main::onLoad()
     createManager<sw::BoxColliderManager>("BoxColliderManager");
     createManager<sw::RigidBody2DManager>("RigidBody2DManager");
     createManager<sw::TextManager>("TextManager");
+    createManager<sw::AudioSourceManager>("AudioManager");
 
     auto& entity = createEntity("Background");
     auto& mainCamera = createEntity("MainCamera");
@@ -49,6 +49,8 @@ void Main::onLoad()
     auto& subtitle = createEntity("Subtitle");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& camAudio = mainCamera.createComponent<sw::AudioSource>("AudioManager");
+    camAudio.setAudio("Menu").setVolume(.5f).play();
     std::string foo("MapMenu");
     std::string ye("Incaribus");
     std::string subtitleT("Press SPACE to start the game");
