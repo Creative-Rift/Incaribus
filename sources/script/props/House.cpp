@@ -9,6 +9,7 @@
 #include "script/props/House.hpp"
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
+#include "gameObject/GameObject.hpp"
 
 inc::House::House(sw::GameObject &gameObject) :
 sw::Component(gameObject)
@@ -18,12 +19,11 @@ sw::Component(gameObject)
 
 void inc::House::start()
 {
-    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
     std::string ye("House");
 
-    transform.setPosition(500, 532);
-    transform.setScale(2.5, 2.5);
+    m_gameObject.transform().setPosition(500, 532);
+    m_gameObject.transform().setScale(2.5, 2.5);
     sprite.setTexture(ye);
     m_gameObject.setLayer("SpriteManager", 1);
 }

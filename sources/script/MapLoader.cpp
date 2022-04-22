@@ -23,7 +23,6 @@ m_mapPath(mapPath)
 
 void inc::MapLoader::start()
 {
-    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
     loadMap(m_mapPath);
 }
 
@@ -50,10 +49,9 @@ void inc::MapLoader::loadMap(std::string mapPath)
             }
             sw::FloatRect rect{16 * (float)(std::atoi(s.c_str()) % 25), 368 - 16 * (float)(std::atoi(s.c_str()) / 25 + 1), 16, 16};
             auto& newEntity = m_gameObject.scene().createGameObject("Tile-" + std::to_string(x) + "-" + std::to_string(y));
-            sw::ConcreteComponent auto& newTransform = newEntity.createComponent<sw::Transform>("TransformManager");
             sw::ConcreteComponent auto& newSprite = newEntity.createComponent<sw::Sprite>("SpriteManager");
-            newTransform.setScale(3, 3);
-            newTransform.setPosition(x * 16 * 3 - 16 * 3, y * 16 * 3 + 250);
+            newEntity.transform().setScale(3, 3);
+            newEntity.transform().setPosition(x * 16 * 3 - 16 * 3, y * 16 * 3 + 250);
             newSprite.setTexture(tileSet);
             newSprite.setTextureRect(rect);
             newEntity.setLayer("SpriteManager", 1);

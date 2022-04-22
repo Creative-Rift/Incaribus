@@ -32,7 +32,6 @@ void Game::onLoad(sw::EventInfo& info)
     scene.eventManager.create("Collision");
     scene.createManager<sw::SpriteManager>("SpriteManager");
     scene.createManager<sw::AnimatorManager>("AnimatorManager");
-    scene.createManager<sw::TransformManager>("TransformManager");
     scene.createManager<sw::CameraManager>("CameraManager");
     scene.createManager<sw::ScriptManager>("ScriptManager");
     scene.createManager<sw::BoxColliderManager>("BoxColliderManager");
@@ -49,7 +48,7 @@ void Game::onLoad(sw::EventInfo& info)
     auto& frog2 = scene.createGameObject("Frog2");
     auto& opossum = scene.createGameObject("Opossum");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
-    sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
+    //sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
     player.createComponent<Player>("ScriptManager");
     map.createComponent<inc::MapLoader>("ScriptManager");
@@ -65,12 +64,12 @@ void Game::onLoad(sw::EventInfo& info)
     //mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
     scene.eventManager.drop("Start");
-    gem1.getComponent<sw::Transform>("TransformManager").setPosition(1000, 550);
-    gem2.getComponent<sw::Transform>("TransformManager").setPosition(1450, 830);
-    gem3.getComponent<sw::Transform>("TransformManager").setPosition(2600, 780);
-    frog1.getComponent<sw::Transform>("TransformManager").setPosition(830, 518);
-    frog2.getComponent<sw::Transform>("TransformManager").setPosition(2800, 858);
-    opossum.getComponent<sw::Transform>("TransformManager").setPosition(2800, 180);
+    gem1.transform().setPosition(1000, 550);
+    gem2.transform().setPosition(1450, 830);
+    gem3.transform().setPosition(2600, 780);
+    frog1.transform().setPosition(830, 518);
+    frog2.transform().setPosition(2800, 858);
+    opossum.transform().setPosition(2800, 180);
     opossum.getComponent<inc::Opossum>("ScriptManager").m_pos1 = {2000, 180};
     opossum.getComponent<inc::Opossum>("ScriptManager").m_pos2 = {3000, 180};
 }

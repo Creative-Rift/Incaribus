@@ -22,14 +22,13 @@ sw::Component(gameObject)
 
 void inc::Gem::start()
 {
-    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
     sw::ConcreteComponent auto& animator = m_gameObject.createComponent<sw::Animator>("AnimatorManager");
     sw::ConcreteComponent auto& collider = m_gameObject.createComponent<sw::BoxCollider>("BoxColliderManager");
     std::string ye("Gem");
 
-    transform.setPosition(1300, 760);
-    transform.setScale(2.5f, 2.5);
+    m_gameObject.transform().setPosition(1300, 760);
+    m_gameObject.transform().setScale(2.5f, 2.5);
     sprite.setTexture(ye);
     m_gameObject.setLayer("SpriteManager", 2);
     animator.setRect({15, 13}).setLoop(true).setFPS(8).play();

@@ -19,7 +19,6 @@ sw::Component(gameObject)
 
 void inc::BackgroundManager::start()
 {
-    m_gameObject.createComponent<sw::Transform>("TransformManager");
     createLayer("LastBG");
 }
 
@@ -35,6 +34,6 @@ void inc::BackgroundManager::createLayer(std::string layer)
 
     layer1.createComponent<inc::Background>("ScriptManager", "Background1").start();
     layer2.createComponent<inc::Background>("ScriptManager", "Background1").start();
-    //m_gameObject.addChild(layer1.name());
-    //m_gameObject.addChild(layer2.name());
+    m_gameObject.addChild(layer1.name());
+    m_gameObject.addChild(layer2.name());
 }

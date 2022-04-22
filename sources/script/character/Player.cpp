@@ -27,13 +27,12 @@ void Player::start()
 {
     sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
     sw::ConcreteComponent auto& animator = m_gameObject.createComponent<sw::Animator>("AnimatorManager");
-    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& collision = m_gameObject.createComponent<sw::BoxCollider>("BoxColliderManager");
     sw::ConcreteComponent auto& rigidbody = m_gameObject.createComponent<sw::RigidBody2D>("RigidBody2DManager");
     std::string ye("Idle");
 
-    transform.setPosition(210, 225);
-    transform.scale(3.0f, 3.0f);
+    m_gameObject.transform().setPosition(210, 225);
+    m_gameObject.transform().scale(3.0f, 3.0f);
     sprite.setTexture(ye);
     m_gameObject.setLayer("SpriteManager", 3);
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
@@ -48,12 +47,11 @@ void Player::update()
 {
     if (sw::OpenGLModule::sceneManager().getActiveScene().name != "Game")
         return;
-    sw::ConcreteComponent auto& transform = m_gameObject.getComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& velocity = m_gameObject.getComponent<sw::RigidBody2D>("RigidBody2DManager");
     sw::ConcreteComponent auto& anim = m_gameObject.getComponent<sw::Animator>("AnimatorManager");
     sw::Vector2f move{0, velocity.getVelocity().y};
     if (sw::isKeyDown(sw::Keyboard::R)) {
-        transform.setPosition(210, 225);
+        m_gameObject.transform().setPosition(210, 225);
         velocity.setVelocity({0, 0});
         move.x = 0;
         move.y = 0;
@@ -76,11 +74,11 @@ void Player::update()
     velocity.setVelocity(move);
 
     auto& camera = m_gameObject.scene().getGameObject("MainCamera");
-    auto& transformCam = camera.getComponent<sw::Transform>("TransformManager");
+    auto& transformCam = camera.transform();
 
-    if (transformCam.getPosition().x < 1100 && transform.getPosition().x > transformCam.getPosition().x + 1000)
+    if (transformCam.getPosition().x < 1100 && m_gameObject.transform().getPosition().x > transformCam.getPosition().x + 1000)
         transformCam.move(7, 0);
-    if (transformCam.getPosition().x > 0 && transform.getPosition().x < transformCam.getPosition().x + 900)
+    if (transformCam.getPosition().x > 0 && m_gameObject.transform().getPosition().x < transformCam.getPosition().x + 900)
         transformCam.move(-7, 0);
 
     if (velocity.getVelocity().y > 0)
