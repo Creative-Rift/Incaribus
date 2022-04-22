@@ -9,15 +9,14 @@
 #ifndef INCARIBUS_FROG_HPP
 #define INCARIBUS_FROG_HPP
 
-#include "SW/Component.hpp"
-#include "SW/Utils.hpp"
+#include "components/base/Component.hpp"
 
 namespace inc
 {
     class Frog : public sw::Component
     {
         public:
-            explicit Frog(sw::Entity& entity);
+            explicit Frog(sw::GameObject& gameObject);
             void start();
     }; // class Frog
 } //namespace inc

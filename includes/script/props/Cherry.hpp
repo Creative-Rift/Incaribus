@@ -9,15 +9,14 @@
 #ifndef INCARIBUS_CHERRY_HPP
 #define INCARIBUS_CHERRY_HPP
 
-#include "SW/Component.hpp"
-#include "SW/Utils.hpp"
+#include "components/base/Component.hpp"
 
 namespace inc
 {
     class Cherry : public sw::Component
     {
         public:
-            explicit Cherry(sw::Entity& entity);
+            explicit Cherry(sw::GameObject& gameObject);
             void start();
     }; // class Cherry
 } //namespace inc

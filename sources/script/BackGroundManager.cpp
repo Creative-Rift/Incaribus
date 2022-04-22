@@ -10,16 +10,16 @@
 #include "script/BackgroundManager.hpp"
 #include "script/Background.hpp"
 
-inc::BackgroundManager::BackgroundManager(sw::Entity &entity) :
-sw::Component(entity)
+inc::BackgroundManager::BackgroundManager(sw::GameObject &gameObject) :
+sw::Component(gameObject)
 {
-    m_entity.scene().eventManager()["Start"].subscribe(this, &inc::BackgroundManager::start);
-    m_entity.scene().eventManager()["Update"].subscribe(this, &inc::BackgroundManager::update);
+    m_gameObject.scene().eventManager["Start"].subscribe(this, &inc::BackgroundManager::start);
+    m_gameObject.scene().eventManager["Update"].subscribe(this, &inc::BackgroundManager::update);
 }
 
 void inc::BackgroundManager::start()
 {
-    m_entity.createComponent<sw::Transform>("TransformManager");
+    m_gameObject.createComponent<sw::Transform>("TransformManager");
     createLayer("LastBG");
 }
 
@@ -30,11 +30,11 @@ void inc::BackgroundManager::update()
 
 void inc::BackgroundManager::createLayer(std::string layer)
 {
-    auto& layer1 = m_entity.scene().createEntity(layer + "1");
-    auto& layer2 = m_entity.scene().createEntity(layer + "2");
+    auto& layer1 = m_gameObject.scene().createGameObject(layer + "1");
+    auto& layer2 = m_gameObject.scene().createGameObject(layer + "2");
 
     layer1.createComponent<inc::Background>("ScriptManager", "Background1").start();
     layer2.createComponent<inc::Background>("ScriptManager", "Background1").start();
-    m_entity.addChild(layer1.name());
-    m_entity.addChild(layer2.name());
+    //m_gameObject.addChild(layer1.name());
+    //m_gameObject.addChild(layer2.name());
 }

@@ -6,7 +6,7 @@
 ** Description: [CHANGE]
 */
 
-#include "includes/manager/ScriptManager.hpp"
+#include "module/managers/ScriptManager.hpp"
 #include "scenes/Game.hpp"
 #include "module/managers/SpriteManager.hpp"
 #include "module/managers/AnimatorManager.hpp"
@@ -20,30 +20,34 @@
 #include "script/props/Gem.hpp"
 #include "script/character/Frog.hpp"
 #include "script/character/Opossum.hpp"
-#include "SW/Engine.hpp"
 #include "OpenGLModule.hpp"
+#include "scenes_manager/SceneLoadEvent.hpp"
 
-void Game::onLoad()
+void Game::onLoad(sw::EventInfo& info)
 {
-    eventManager().create("Collision");
-    createManager<sw::SpriteManager>("SpriteManager");
-    createManager<sw::AnimatorManager>("AnimatorManager");
-    createManager<sw::TransformManager>("TransformManager");
-    createManager<sw::CameraManager>("CameraManager");
-    createManager<sw::ScriptManager>("ScriptManager");
-    createManager<sw::BoxColliderManager>("BoxColliderManager");
-    createManager<sw::RigidBody2DManager>("RigidBody2DManager");
+    auto& scene = info.getInfo<sw::SceneLoadEvent>().scene;
 
-    auto& entity = createEntity("Background");
-    auto& mainCamera = createEntity("MainCamera");
-    auto& player = createEntity("Player");
-    auto& map = createEntity("Map");
-    auto& gem1 = createEntity("Gem1");
-    auto& gem2 = createEntity("Gem2");
-    auto& gem3 = createEntity("Gem3");
-    auto& frog1 = createEntity("Frog1");
-    auto& frog2 = createEntity("Frog2");
-    auto& opossum = createEntity("Opossum");
+    if (scene.name != "Game")
+        return;
+    scene.eventManager.create("Collision");
+    scene.createManager<sw::SpriteManager>("SpriteManager");
+    scene.createManager<sw::AnimatorManager>("AnimatorManager");
+    scene.createManager<sw::TransformManager>("TransformManager");
+    scene.createManager<sw::CameraManager>("CameraManager");
+    scene.createManager<sw::ScriptManager>("ScriptManager");
+    scene.createManager<sw::BoxColliderManager>("BoxColliderManager");
+    scene.createManager<sw::RigidBody2DManager>("RigidBody2DManager");
+
+    auto& entity =  scene.createGameObject("Background");
+    auto& mainCamera = scene.createGameObject("MainCamera");
+    auto& player = scene.createGameObject("Player");
+    auto& map = scene.createGameObject("Map");
+    auto& gem1 = scene.createGameObject("Gem1");
+    auto& gem2 = scene.createGameObject("Gem2");
+    auto& gem3 = scene.createGameObject("Gem3");
+    auto& frog1 = scene.createGameObject("Frog1");
+    auto& frog2 = scene.createGameObject("Frog2");
+    auto& opossum = scene.createGameObject("Opossum");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     std::string foo("MapMenu");
@@ -58,9 +62,9 @@ void Game::onLoad()
     opossum.createComponent<inc::Opossum>("ScriptManager");
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
-    mainCamera.addChild(entity.name());
+    //mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
-    eventManager().drop("Start");
+    scene.eventManager.drop("Start");
     gem1.getComponent<sw::Transform>("TransformManager").setPosition(1000, 550);
     gem2.getComponent<sw::Transform>("TransformManager").setPosition(1450, 830);
     gem3.getComponent<sw::Transform>("TransformManager").setPosition(2600, 780);
@@ -69,14 +73,4 @@ void Game::onLoad()
     opossum.getComponent<sw::Transform>("TransformManager").setPosition(2800, 180);
     opossum.getComponent<inc::Opossum>("ScriptManager").m_pos1 = {2000, 180};
     opossum.getComponent<inc::Opossum>("ScriptManager").m_pos2 = {3000, 180};
-}
-
-void Game::onUpdate()
-{
-    eventManager().drop("Update");
-}
-
-void Game::onUnload()
-{
-
 }

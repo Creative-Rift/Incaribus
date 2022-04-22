@@ -9,13 +9,13 @@
 #ifndef INCARIBUS_PLAYER_HPP
 #define INCARIBUS_PLAYER_HPP
 
-#include "SW/Component.hpp"
+#include "components/base/Component.hpp"
 #include "event/EventCollision.hpp"
 
 class Player : public sw::Component
 {
     public:
-        explicit Player(sw::Entity& entity);
+        explicit Player(sw::GameObject& gameObject);
         void start();
         void update();
 

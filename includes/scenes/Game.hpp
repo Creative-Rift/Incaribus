@@ -9,17 +9,13 @@
 #ifndef INCARIBUS_GAME_HPP
 #define INCARIBUS_GAME_HPP
 
-#include "SW/Scene.hpp"
+#include "event/EventInfo.hpp"
 
-class Game : public sw::AScene
+class Game
 {
-    private:
-        using sw::AScene::AScene;
-
-        void onLoad() override;
-        void onUpdate() override;
-        void onUnload() override;
-        std::string type() const override { return (""); }
+    public:
+        std::string name() {return ("ye");}
+        void onLoad(sw::EventInfo& info);
 };
 
 #endif //INCARIBUS_GAME_HPP

@@ -9,8 +9,8 @@
 #ifndef INCARIBUS_OPOSSUM_HPP
 #define INCARIBUS_OPOSSUM_HPP
 
-#include "SW/Component.hpp"
-#include "SW/Utils.hpp"
+#include "components/base/Component.hpp"
+#include "utils/Vector2.hpp"
 
 namespace inc
 {
@@ -26,7 +26,7 @@ namespace inc
             sw::Vector2f m_pos1;
             sw::Vector2f m_pos2;
 
-            explicit Opossum(sw::Entity& entity);
+            explicit Opossum(sw::GameObject& entity);
             void start();
             void update();
     }; // class Opossum

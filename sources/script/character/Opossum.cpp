@@ -11,21 +11,21 @@
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"
 
-inc::Opossum::Opossum(sw::Entity &entity) :
-sw::Component(entity),
+inc::Opossum::Opossum(sw::GameObject &gameObject) :
+sw::Component(gameObject),
 m_direction(LEFT),
 m_pos1{1550, 225},
 m_pos2{2000, 225}
 {
-    entity.scene().eventManager()["Start"].subscribe(this, &inc::Opossum::start);
-    entity.scene().eventManager()["Update"].subscribe(this, &inc::Opossum::update);
+    gameObject.scene().eventManager["Start"].subscribe(this, &inc::Opossum::start);
+    gameObject.scene().eventManager["Update"].subscribe(this, &inc::Opossum::update);
 }
 
 void inc::Opossum::start()
 {
-    sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
-    sw::ConcreteComponent auto& sprite = m_entity.createComponent<sw::Sprite>("SpriteManager");
-    sw::ConcreteComponent auto& animator = m_entity.createComponent<sw::Animator>("AnimatorManager");
+    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& animator = m_gameObject.createComponent<sw::Animator>("AnimatorManager");
     std::string ye("Opossum");
 
     transform.setPosition(1800, 250);
@@ -36,8 +36,8 @@ void inc::Opossum::start()
 
 void inc::Opossum::update()
 {
-    sw::ConcreteComponent auto& transform = m_entity.getComponent<sw::Transform>("TransformManager");
-    sw::ConcreteComponent auto& sprite = m_entity.getComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& transform = m_gameObject.getComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& sprite = m_gameObject.getComponent<sw::Sprite>("SpriteManager");
 
     if (m_direction == LEFT) {
         transform.move(-4, 0);

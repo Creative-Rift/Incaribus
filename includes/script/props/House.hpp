@@ -9,15 +9,14 @@
 #ifndef INCARIBUS_HOUSE_HPP
 #define INCARIBUS_HOUSE_HPP
 
-#include "SW/Component.hpp"
-#include "SW/Utils.hpp"
+#include "components/base/Component.hpp"
 
 namespace inc
 {
     class House : public sw::Component
     {
         public:
-            explicit House(sw::Entity& entity);
+            explicit House(sw::GameObject& gameObject);
             void start();
     }; // class House
 } //namespace inc

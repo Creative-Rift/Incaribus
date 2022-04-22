@@ -9,16 +9,15 @@
 #ifndef INCARIBUS_GEM_HPP
 #define INCARIBUS_GEM_HPP
 
-#include "SW/Component.hpp"
-#include "SW/Utils.hpp"
-#include "includes/event/EventInfo.hpp"
+#include "components/base/Component.hpp"
+#include "event/EventInfo.hpp"
 
 namespace inc
 {
     class Gem : public sw::Component
     {
         public:
-            explicit Gem(sw::Entity& entity);
+            explicit Gem(sw::GameObject& gameObject);
             void start();
             void onCollide(sw::EventInfo& info);
     }; // class Cherry

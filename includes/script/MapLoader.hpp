@@ -9,7 +9,7 @@
 #ifndef INCARIBUS_MAPLOADER_HPP
 #define INCARIBUS_MAPLOADER_HPP
 
-#include "SW/Component.hpp"
+#include "components/Components.hpp"
 
 namespace inc
 {
@@ -18,7 +18,7 @@ namespace inc
         private:
             std::string m_mapPath;
         public:
-            explicit MapLoader(sw::Entity& entity, std::string mapPath = "resources/map/GameMap.csv");
+            explicit MapLoader(sw::GameObject& gameObject, std::string mapPath = "resources/map/GameMap.csv");
             void start();
             void loadMap(std::string mapPath);
             void reloadMap();

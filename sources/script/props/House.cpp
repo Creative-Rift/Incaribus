@@ -10,20 +10,20 @@
 #include "components/Transform.hpp"
 #include "components/Sprite.hpp"
 
-inc::House::House(sw::Entity &entity) :
-sw::Component(entity)
+inc::House::House(sw::GameObject &gameObject) :
+sw::Component(gameObject)
 {
-    entity.scene().eventManager()["Start"].subscribe(this, &inc::House::start);
+    gameObject.scene().eventManager["Start"].subscribe(this, &inc::House::start);
 }
 
 void inc::House::start()
 {
-    sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
-    sw::ConcreteComponent auto& sprite = m_entity.createComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
     std::string ye("House");
 
     transform.setPosition(500, 532);
     transform.setScale(2.5, 2.5);
     sprite.setTexture(ye);
-    m_entity.setLayer("SpriteManager", 1);
+    m_gameObject.setLayer("SpriteManager", 1);
 }

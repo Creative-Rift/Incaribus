@@ -6,24 +6,23 @@
 ** Description: [CHANGE]
 */
 
-#include "SW/Engine.hpp"
 #include "OpenGLModule.hpp"
 #include "Project.hpp"
+#include "scenes_manager/scene/Scene.hpp"
 
 int main()
 try
 {
     sw::Speech::setDisplayed(true);
 
-    sw::Engine::createModule<sw::OpenGLModule>();
     sw::CreateScenes();
-    sw::Engine::initialize();
-    sw::Engine::activeScene().load();
+    sw::OpenGLModule::load();
+    sw::OpenGLModule::sceneManager().loadScene("Main");
     sw::Speech::flush();
-    while (sw::Engine::getModule().isOk())
-        sw::Engine::update();
+    while (sw::OpenGLModule::isOk())
+        sw::OpenGLModule::update();
     sw::Speech::flush();
-    sw::Engine::terminate();
+    sw::OpenGLModule::unload();
     sw::Speech::flush();
     return (0);
 }

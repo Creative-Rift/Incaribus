@@ -11,22 +11,22 @@
 #include "components/Sprite.hpp"
 #include "components/Animator.hpp"
 
-inc::Cherry::Cherry(sw::Entity &entity) :
-sw::Component(entity)
+inc::Cherry::Cherry(sw::GameObject &gameObject) :
+sw::Component(gameObject)
 {
-    entity.scene().eventManager()["Start"].subscribe(this, &inc::Cherry::start);
+    gameObject.scene().eventManager["Start"].subscribe(this, &inc::Cherry::start);
 }
 
 void inc::Cherry::start()
 {
-    sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
-    sw::ConcreteComponent auto& sprite = m_entity.createComponent<sw::Sprite>("SpriteManager");
-    sw::ConcreteComponent auto& animator = m_entity.createComponent<sw::Animator>("AnimatorManager");
+    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& animator = m_gameObject.createComponent<sw::Animator>("AnimatorManager");
     std::string ye("Cherry");
 
     transform.setPosition(1400, 250);
     transform.setScale(3.0f, 3.0f);
     sprite.setTexture(ye);
-    m_entity.setLayer("SpriteManager", 2);
+    m_gameObject.setLayer("SpriteManager", 2);
     animator.setRect({21, 21}).setLoop(true).setFPS(8).play();
 }

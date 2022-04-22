@@ -6,7 +6,7 @@
 ** Description: [CHANGE]
 */
 
-#include "includes/manager/ScriptManager.hpp"
+#include "module/managers/ScriptManager.hpp"
 #include "scenes/Main.hpp"
 #include "module/managers/SpriteManager.hpp"
 #include "module/managers/AnimatorManager.hpp"
@@ -23,30 +23,35 @@
 #include "script/character/Frog.hpp"
 #include "script/props/House.hpp"
 #include "OpenGLModule.hpp"
+#include "scenes_manager/SceneLoadEvent.hpp"
 
-void Main::onLoad()
+void Main::onLoad(sw::EventInfo& info)
 {
-    eventManager().create("Collision");
-    createManager<sw::SpriteManager>("SpriteManager");
-    createManager<sw::AnimatorManager>("AnimatorManager");
-    createManager<sw::TransformManager>("TransformManager");
-    createManager<sw::CameraManager>("CameraManager");
-    createManager<sw::ScriptManager>("ScriptManager");
-    createManager<sw::BoxColliderManager>("BoxColliderManager");
-    createManager<sw::RigidBody2DManager>("RigidBody2DManager");
-    createManager<sw::TextManager>("TextManager");
-    createManager<sw::AudioSourceManager>("AudioManager");
+    auto& scene = info.getInfo<sw::SceneLoadEvent>().scene;
 
-    auto& entity = createEntity("Background");
-    auto& mainCamera = createEntity("MainCamera");
-    auto& menuMap = createEntity("MenuMap");
-    auto& player = createEntity("Player");
-    auto& opossum = createEntity("Opossum");
-    auto& gem = createEntity("Gem");
-    auto& frog = createEntity("Frog");
-    auto& house = createEntity("House");
-    auto& title = createEntity("Title");
-    auto& subtitle = createEntity("Subtitle");
+    if (scene.name != "Main")
+        return;
+    scene.eventManager.create("Collision");
+    scene.createManager<sw::SpriteManager>("SpriteManager");
+    scene.createManager<sw::AnimatorManager>("AnimatorManager");
+    scene.createManager<sw::TransformManager>("TransformManager");
+    scene.createManager<sw::CameraManager>("CameraManager");
+    scene.createManager<sw::ScriptManager>("ScriptManager");
+    scene.createManager<sw::BoxColliderManager>("BoxColliderManager");
+    scene.createManager<sw::RigidBody2DManager>("RigidBody2DManager");
+    scene.createManager<sw::TextManager>("TextManager");
+    scene.createManager<sw::AudioSourceManager>("AudioManager");
+
+    auto& entity = scene.createGameObject("Background");
+    auto& mainCamera = scene.createGameObject("MainCamera");
+    auto& menuMap = scene.createGameObject("MenuMap");
+    auto& player = scene.createGameObject("Player");
+    auto& opossum = scene.createGameObject("Opossum");
+    auto& gem = scene.createGameObject("Gem");
+    auto& frog = scene.createGameObject("Frog");
+    auto& house = scene.createGameObject("House");
+    auto& title = scene.createGameObject("Title");
+    auto& subtitle = scene.createGameObject("Subtitle");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camTrans = mainCamera.createComponent<sw::Transform>("TransformManager");
     sw::ConcreteComponent auto& camAudio = mainCamera.createComponent<sw::AudioSource>("AudioManager");
@@ -77,17 +82,5 @@ void Main::onLoad()
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     camera.setClippingNear(-1);
-    eventManager().drop("Start");
-}
-
-void Main::onUpdate()
-{
-    eventManager().drop("Update");
-    if (sw::isKeyReleased(sw::Keyboard::SPACE))
-        sw::Engine::setActiveScene("Game");
-}
-
-void Main::onUnload()
-{
-
+    scene.eventManager.drop("Start");
 }

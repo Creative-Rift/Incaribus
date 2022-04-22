@@ -14,16 +14,16 @@
 #include "components/BoxCollider.hpp"
 #include "script/MapLoader.hpp"
 
-inc::MapLoader::MapLoader(sw::Entity &entity, std::string mapPath) :
-sw::Component(entity),
+inc::MapLoader::MapLoader(sw::GameObject &gameObject, std::string mapPath) :
+sw::Component(gameObject),
 m_mapPath(mapPath)
 {
-    entity.scene().eventManager()["Start"].subscribe(this, &inc::MapLoader::start);
+    gameObject.scene().eventManager["Start"].subscribe(this, &inc::MapLoader::start);
 }
 
 void inc::MapLoader::start()
 {
-    sw::ConcreteComponent auto& transform = m_entity.createComponent<sw::Transform>("TransformManager");
+    sw::ConcreteComponent auto& transform = m_gameObject.createComponent<sw::Transform>("TransformManager");
     loadMap(m_mapPath);
 }
 
@@ -49,7 +49,7 @@ void inc::MapLoader::loadMap(std::string mapPath)
                 continue;
             }
             sw::FloatRect rect{16 * (float)(std::atoi(s.c_str()) % 25), 368 - 16 * (float)(std::atoi(s.c_str()) / 25 + 1), 16, 16};
-            auto& newEntity = m_entity.scene().createEntity("Tile-" + std::to_string(x) + "-" + std::to_string(y));
+            auto& newEntity = m_gameObject.scene().createGameObject("Tile-" + std::to_string(x) + "-" + std::to_string(y));
             sw::ConcreteComponent auto& newTransform = newEntity.createComponent<sw::Transform>("TransformManager");
             sw::ConcreteComponent auto& newSprite = newEntity.createComponent<sw::Sprite>("SpriteManager");
             newTransform.setScale(3, 3);
