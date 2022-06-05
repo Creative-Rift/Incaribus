@@ -15,11 +15,11 @@
 
 #include "script/character/Player.hpp"
 #include "OpenGLModule.hpp"
+#include "components/AudioSource.hpp"
 
 Player::Player(sw::GameObject &gameObject) :
 sw::Component(gameObject)
 {
-    m_gameObject.scene().eventManager["Start"].subscribe(this, &Player::start);
     m_gameObject.scene().eventManager["Update"].subscribe(this, &Player::update);
 }
 
@@ -33,7 +33,7 @@ void Player::start()
 
     m_gameObject.transform().setPosition(210, 225);
     m_gameObject.transform().scale(3.0f, 3.0f);
-    sprite.setTexture(ye);
+    sprite.setTexture(ye).flipOnX(true);
     m_gameObject.setLayer("SpriteManager", 3);
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(2, 3);
     animator.play();
@@ -45,6 +45,8 @@ void Player::start()
 
 void Player::update()
 {
+    if (sw::isKeyDown(sw::Keyboard::G))
+        gameObject().scene().getGameObject("MainCamera").getComponent<sw::AudioSource>("AudioManager").play();
     if (sw::OpenGLModule::sceneManager().getActiveScene().name != "Game")
         return;
     sw::ConcreteComponent auto& velocity = m_gameObject.getComponent<sw::RigidBody2D>("RigidBody2DManager");

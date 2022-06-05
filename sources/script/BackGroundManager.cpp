@@ -13,7 +13,6 @@
 inc::BackgroundManager::BackgroundManager(sw::GameObject &gameObject) :
 sw::Component(gameObject)
 {
-    m_gameObject.scene().eventManager["Start"].subscribe(this, &inc::BackgroundManager::start);
     m_gameObject.scene().eventManager["Update"].subscribe(this, &inc::BackgroundManager::update);
 }
 

@@ -3,6 +3,7 @@
     "Path": "resources/textures/missing_texture.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -10,7 +11,8 @@
   "Logo": {
     "Path": "resources/textures/logo.png",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Texture"
   },
@@ -18,6 +20,7 @@
     "Path": "resources/textures/player.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -25,7 +28,8 @@
   "Explode": {
     "Path": "resources/textures/x.png",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Texture"
   },
@@ -33,6 +37,7 @@
     "Path": "resources/textures/back.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -40,7 +45,8 @@
   "MapMenu": {
     "Path": "resources/textures/MenuMap.png",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Texture"
   },
@@ -48,6 +54,7 @@
     "Path": "resources/textures/oposum.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -55,7 +62,8 @@
   "Cherry": {
     "Path": "resources/textures/cherry.png",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Texture"
   },
@@ -63,6 +71,7 @@
     "Path": "resources/textures/gem.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -71,6 +80,7 @@
     "Path": "resources/textures/frog-idle.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -79,6 +89,7 @@
     "Path": "resources/textures/house.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -87,6 +98,7 @@
     "Path": "resources/textures/tileset.png",
     "Scene": [
       "Main",
+      "MainFile",
       "Game"
     ],
     "Type": "Texture"
@@ -94,21 +106,56 @@
   "DefaultFont": {
     "Path": "resources/font/calibri-regular.ttf",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Font"
   },
   "Pixel": {
     "Path": "resources/font/AEXKON_Regular.ttf",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
     ],
     "Type": "Font"
   },
   "Menu": {
     "Path": "resources/audio/Menu_scene.mp3",
     "Scene": [
-      "Main"
+      "Main",
+      "MainFile"
+    ],
+    "Type": "Audio"
+  },
+  "Bonus_1": {
+    "Path": "resources/audio/sx/FX_Bonus_1.wav",
+    "Scene": [
+      "Main",
+      "MainFile"
+    ],
+    "Type": "Audio"
+  },
+  "Bonus_2": {
+    "Path": "resources/audio/sx/FX_Bonus_2.wav",
+    "Scene": [
+      "Main",
+      "MainFile"
+    ],
+    "Type": "Audio"
+  },
+  "Bonus_3": {
+    "Path": "resources/audio/sx/FX_Bonus_3.wav",
+    "Scene": [
+      "Main",
+      "MainFile"
+    ],
+    "Type": "Audio"
+  },
+  "Bonus_4": {
+    "Path": "resources/audio/sx/FX_Bonus_4.wav",
+    "Scene": [
+      "Main",
+      "MainFile"
     ],
     "Type": "Audio"
   }

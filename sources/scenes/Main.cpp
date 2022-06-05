@@ -6,14 +6,9 @@
 ** Description: [CHANGE]
 */
 
-#include "module/managers/ScriptManager.hpp"
 #include "scenes/Main.hpp"
 #include "module/managers/SpriteManager.hpp"
-#include "module/managers/AnimatorManager.hpp"
-#include "module/managers/TransformManager.hpp"
 #include "module/managers/CameraManager.hpp"
-#include "module/managers/BoxColliderManager.hpp"
-#include "module/managers/RigidBody2DManager.hpp"
 #include "module/managers/TextManager.hpp"
 #include "module/managers/AudioSourceManager.hpp"
 #include "script/BackgroundManager.hpp"
@@ -32,14 +27,6 @@ void Main::onLoad(sw::EventInfo& info)
     if (scene.name != "Main")
         return;
     scene.eventManager.create("Collision");
-    scene.createManager<sw::SpriteManager>("SpriteManager");
-    scene.createManager<sw::AnimatorManager>("AnimatorManager");
-    scene.createManager<sw::CameraManager>("CameraManager");
-    scene.createManager<sw::ScriptManager>("ScriptManager");
-    scene.createManager<sw::BoxColliderManager>("BoxColliderManager");
-    scene.createManager<sw::RigidBody2DManager>("RigidBody2DManager");
-    scene.createManager<sw::TextManager>("TextManager");
-    scene.createManager<sw::AudioSourceManager>("AudioManager");
 
     auto& entity = scene.createGameObject("Background");
     auto& mainCamera = scene.createGameObject("MainCamera");
@@ -53,7 +40,8 @@ void Main::onLoad(sw::EventInfo& info)
     auto& subtitle = scene.createGameObject("Subtitle");
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camAudio = mainCamera.createComponent<sw::AudioSource>("AudioManager");
-    camAudio.setAudio("Menu").setVolume(.1f).play();
+    //camAudio.addAudio("Bonus_1").addAudio("Bonus_2").addAudio("Bonus_3").addAudio("Bonus_4").setVolume(.5f).setRandomized(true).setMaxOccurence(1).play();
+    camAudio.setAudio("Menu").setVolume(.5f).play();
     std::string foo("MapMenu");
     std::string ye("Incaribus");
     std::string subtitleT("Press SPACE to start the game");
@@ -79,5 +67,4 @@ void Main::onLoad(sw::EventInfo& info)
 
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     camera.setClippingNear(-1);
-    scene.eventManager.drop("Start");
 }
