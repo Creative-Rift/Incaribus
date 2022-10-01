@@ -42,6 +42,8 @@ set( INC_FOLDERS
         )
 
 message(${PREFIX_MESSAGE} "Build type set to: " ${CMAKE_BUILD_TYPE})
+message(${PREFIX_MESSAGE} "Current cmake location: " ${CMAKE_CURRENT_SOURCE_DIR})
+message(${PREFIX_MESSAGE} "Project location: " ${CMAKE_SOURCE_DIR})
 
 if (WIN32)
     message(${PREFIX_MESSAGE} "Windows system detected, prepare project...")

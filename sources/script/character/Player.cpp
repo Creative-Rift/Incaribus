@@ -15,11 +15,13 @@
 
 #include "script/character/Player.hpp"
 #include "OpenGLModule.hpp"
+#include "window/Window.hpp"
 #include "components/AudioSource.hpp"
 
 Player::Player(sw::GameObject &gameObject) :
 sw::Component(gameObject)
 {
+    m_gameObject.scene().eventManager["Start"].subscribe(this, &Player::start);
     m_gameObject.scene().eventManager["Update"].subscribe(this, &Player::update);
 }
 

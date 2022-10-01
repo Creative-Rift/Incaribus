@@ -18,8 +18,8 @@ void sw::CreateScenes()
     auto main = new Main();
     auto mainfile = new MainFile();
     sw::OpenGLModule::eventManager().create("SceneLoad");
-    sw::OpenGLModule::sceneManager().createScene("MainFile", "Save/Main.fish");
     sw::OpenGLModule::sceneManager().createScene("Main");
+    sw::OpenGLModule::sceneManager().createScene("MainFile");
     sw::OpenGLModule::sceneManager().createScene("Game");
 
     sw::OpenGLModule::eventManager()["SceneLoad"].subscribe(game, &Game::onLoad);

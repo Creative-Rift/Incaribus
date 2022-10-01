@@ -10,17 +10,19 @@
 #include "components/Sprite.hpp"
 #include "script/Background.hpp"
 #include "OpenGLModule.hpp"
+#include "window/Window.hpp"
 
 inc::Background::Background(sw::GameObject &gameObject, std::string textureName) :
 sw::Component(gameObject),
 m_texture(textureName)
 {
+    m_gameObject.scene().eventManager["Start"].subscribe(this, &inc::Background::start);
     m_gameObject.scene().eventManager["Update"].subscribe(this, &inc::Background::update);
 }
 
 void inc::Background::start()
 {
-    sw::ConcreteComponent auto& sprite = m_gameObject.getComponent<sw::Sprite>("SpriteManager");
+    sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
 
     sprite.setTexture(m_texture);
     m_gameObject.transform().setScale(5.5f, 5.5f);

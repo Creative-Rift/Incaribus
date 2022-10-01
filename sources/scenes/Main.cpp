@@ -41,7 +41,7 @@ void Main::onLoad(sw::EventInfo& info)
     sw::ConcreteComponent auto& camera = mainCamera.createComponent<sw::Camera>("CameraManager");
     sw::ConcreteComponent auto& camAudio = mainCamera.createComponent<sw::AudioSource>("AudioManager");
     //camAudio.addAudio("Bonus_1").addAudio("Bonus_2").addAudio("Bonus_3").addAudio("Bonus_4").setVolume(.5f).setRandomized(true).setMaxOccurence(1).play();
-    camAudio.setAudio("Menu").setVolume(.5f).play();
+    camAudio.addAudio("Menu").setVolume(.0f).play();
     std::string foo("MapMenu");
     std::string ye("Incaribus");
     std::string subtitleT("Press SPACE to start the game");

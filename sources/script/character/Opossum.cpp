@@ -17,6 +17,7 @@ m_direction(LEFT),
 m_pos1{1550, 225},
 m_pos2{2000, 225}
 {
+    gameObject.scene().eventManager["Start"].subscribe(this, &inc::Opossum::start);
     gameObject.scene().eventManager["Update"].subscribe(this, &inc::Opossum::update);
 }
 

@@ -450,9 +450,8 @@ manager:
     active: true
     components:
       - entity_name: MainCamera
-        audioFile: Menu
-        volume: 0.5
-        pitch: 1
+        volume: 0
+        pitch: 0
         playOnStart: true
     layer:
       - name: MainCamera

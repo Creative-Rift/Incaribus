@@ -206,40 +206,6 @@ entities:
         - 1
         - 0
     parent: Background
-  - name: Rect
-    active: true
-    transform:
-      entity_name: Rect
-      position:
-        - 0
-        - 0
-        - 0
-      scale:
-        - 1
-        - 1
-        - 1
-      angle: 0
-      rotation_axis:
-        - 0
-        - 1
-        - 0
-  - name: RenderTexture
-    active: true
-    transform:
-      entity_name: RenderTexture
-      position:
-        - 50
-        - 0
-        - 0
-      scale:
-        - 1
-        - 1
-        - 1
-      angle: 0
-      rotation_axis:
-        - 0
-        - 1
-        - 0
 manager:
   - name: SpriteManager
     valid: true
@@ -389,24 +355,6 @@ manager:
           shader:
             fragment: resources/shaders/fragment_shader.glsl
             vertex: resources/shaders/vertex_shader.glsl
-      - entity_name: RenderTexture
-        invertX: false
-        invertY: false
-        rect:
-          - 900
-          - 900
-          - 500
-          - 500
-        color:
-          r: 0
-          g: 0
-          b: 0
-          a: 255
-        material:
-          textureName: RenderTexture
-          shader:
-            fragment: resources/shaders/fragment_shader.glsl
-            vertex: resources/shaders/vertex_shader.glsl
     layer:
       - name: LastBG1
         index: 0
@@ -415,8 +363,6 @@ manager:
       - name: MenuMap
         index: 0
       - name: Opossum
-        index: 0
-      - name: RenderTexture
         index: 0
       - name: House
         index: 1
@@ -558,12 +504,6 @@ manager:
     valid: true
     active: true
     components:
-      - entity_name: Rect
-        fov: 45
-        size: 1
-        clipNear: 0.100000001
-        clipFar: 1000
-        type: 1
       - entity_name: MainCamera
         fov: 45
         size: 1
@@ -571,7 +511,5 @@ manager:
         clipFar: 1000
         type: 1
     layer:
-      - name: Rect
-        index: -1
       - name: MainCamera
         index: 0

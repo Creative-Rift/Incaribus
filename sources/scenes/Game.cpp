@@ -30,12 +30,6 @@ void Game::onLoad(sw::EventInfo& info)
     if (scene.name != "Game")
         return;
     scene.eventManager.create("Collision");
-    scene.createManager<sw::SpriteManager>("SpriteManager");
-    scene.createManager<sw::AnimatorManager>("AnimatorManager");
-    scene.createManager<sw::CameraManager>("CameraManager");
-    scene.createManager<sw::ScriptManager>("ScriptManager");
-    scene.createManager<sw::BoxColliderManager>("BoxColliderManager");
-    scene.createManager<sw::RigidBody2DManager>("RigidBody2DManager");
 
     auto& entity =  scene.createGameObject("Background");
     auto& mainCamera = scene.createGameObject("MainCamera");
@@ -63,7 +57,7 @@ void Game::onLoad(sw::EventInfo& info)
     entity.createComponent<inc::BackgroundManager>("ScriptManager");
     //mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
-    scene.eventManager.drop("Start");
+    //scene.eventManager.drop("Start");
     gem1.transform().setPosition(1000, 550);
     gem2.transform().setPosition(1450, 830);
     gem3.transform().setPosition(2600, 780);

@@ -29,16 +29,5 @@ void MainFile::onLoad(sw::EventInfo& info)
     player.createComponent<Player>("ScriptManager");
     opossum.createComponent<inc::Opossum>("ScriptManager");
 
-    auto& cam = scene.getGameObject("MainCamera");
-    scene.createGameObject("Rect").createComponent<sw::Camera>("CameraManager").createRenderTexture("RenderTexture");
-    cam.transform().move(0, 0);
-
-    auto& go = scene.createGameObject("RenderTexture");
-    auto& sprite = go.createComponent<sw::Sprite>("SpriteManager");
-    std::string sp = "RenderTexture";
-    sw::FloatRect rect = {900, 900, 500, 500};
-    sprite.setTexture(sp).setTextureRect(rect);
-    go.transform().move(50, 0);
-
     entity.createComponent<inc::BackgroundManager>("ScriptManager").start();
 }
