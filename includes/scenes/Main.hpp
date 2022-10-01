@@ -6,19 +6,15 @@
 ** Description: [CHANGE]
 */
 
-#include "SW/Scene.hpp"
-
 #ifndef INCARIBUS_MAIN_HPP
 #define INCARIBUS_MAIN_HPP
 
-class Main : public sw::AScene {
-    public:
-        using sw::AScene::AScene;
+#include "event/EventInfo.hpp"
 
-        void onLoad() override;
-        void onUpdate() override;
-        void onUnload() override;
-        std::string type() const override { return (""); }
+class Main{
+    public:
+        std::string name() {return ("ye");}
+        void onLoad(sw::EventInfo& info);
 };
 
 #endif //INCARIBUS_MAIN_HPP

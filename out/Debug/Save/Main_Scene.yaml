@@ -1,0 +1,16 @@
+Manager:
+  - name: "SpriteManager"
+    component:
+      - entity_name: "Player"
+        invertX: false
+        invertY: false
+        rect: [0, 0, 100, 100]
+        color: [1, 1, 1, 1]
+        material:
+          texture: "Player"
+          shader: {vertex: "path", fragment: "path"}
+        vertex_array:
+          - {position: {0, 0, 0}, color: {1, 1, 1, 1}, texCoord: {0, 0}}
+          - {position: {0, 0, 0}, color: {1, 1, 1, 1}, texCoord: {0, 0}}
+          - {position: {0, 0, 0}, color: {1, 1, 1, 1}, texCoord: {0, 0}}
+          - {position: {0, 0, 0}, color: {1, 1, 1, 1}, texCoord: {0, 0}}

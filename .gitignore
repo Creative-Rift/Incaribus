@@ -35,3 +35,6 @@
 .vscode
 cmake-*
 libraries
+*.exp
+
+*.pdb

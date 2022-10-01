@@ -9,7 +9,7 @@
 #ifndef INCARIBUS_BACKGROUND_HPP
 #define INCARIBUS_BACKGROUND_HPP
 
-#include "SW/Component.hpp"
+#include "components/Components.hpp"
 #include "resources/OpenResources.hpp"
 
 namespace inc
@@ -19,7 +19,7 @@ namespace inc
         private:
             std::string m_texture;
         public:
-            explicit Background(sw::Entity& entity, std::string textureName);
+            explicit Background(sw::GameObject& gameObject, std::string textureName);
             void start();
             void update();
     }; // class BackGround

@@ -9,7 +9,7 @@
 #ifndef INCARIBUS_BACKGROUNDMANAGER_HPP
 #define INCARIBUS_BACKGROUNDMANAGER_HPP
 
-#include "SW/Component.hpp"
+#include "components/Components.hpp"
 
 namespace inc
 {
@@ -18,7 +18,7 @@ namespace inc
         private:
 
         public:
-            explicit BackgroundManager(sw::Entity& entity);
+            explicit BackgroundManager(sw::GameObject& gameObject);
             void start();
             void update();
             void createLayer(std::string layer);
