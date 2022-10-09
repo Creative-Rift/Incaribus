@@ -16,6 +16,7 @@ set( SHARED_LIB_NAME
         glfw
         sndfile
         freetype
+        assimp-vc143-mtd
         )
 
 ## IMPORTED SHARED LIBRARY LOCATION
@@ -25,6 +26,7 @@ set( SHARED_LIB_LOCATION
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/glfw3.dll
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/sndfile.dll
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/freetype.dll
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/assimp-vc143-mtd.dll
         )
 ## IMPORTED SHARED LIBRARY lib file
 set( SHARED_LIB
@@ -33,6 +35,7 @@ set( SHARED_LIB
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/glfw3.lib
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/sndfile.lib
         ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/freetype.lib
+        ${CMAKE_SOURCE_DIR}/libraries/${CMAKE_BUILD_TYPE}/assimp-vc143-mtd.lib
         )
 
 ### IMPORTED STATIC LIBRARY NAME
