@@ -159,5 +159,19 @@
       "MainFile"
     ],
     "Type": "Audio"
+  },
+  "Backpack": {
+    "Path": "resources/model/backpack.obj",
+    "Scene": [
+      "Cyber"
+    ],
+    "Type": "Model"
+  },
+  "Cube": {
+    "Path": "resources/model/Cube.obj",
+    "Scene": [
+      "Cyber"
+    ],
+    "Type": "Model"
   }
 }
