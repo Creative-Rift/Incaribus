@@ -18,7 +18,14 @@ namespace inc
         private:
 
         public:
-            explicit BackgroundManager(sw::GameObject& gameObject);
+            std::string m_textureName;
+            float m_scale;
+            int m_layer;
+            float m_speed;
+            bool m_multipleTexture;
+            sw::FloatRect m_rect;
+
+            explicit BackgroundManager(sw::GameObject& gameObject, std::string textureName, float scale);
             void start();
             void update();
             void createLayer(std::string layer);

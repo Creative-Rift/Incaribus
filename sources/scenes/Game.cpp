@@ -54,7 +54,7 @@ void Game::onLoad(sw::EventInfo& info)
     frog2.createComponent<inc::Frog>("ScriptManager");
     opossum.createComponent<inc::Opossum>("ScriptManager");
 
-    entity.createComponent<inc::BackgroundManager>("ScriptManager");
+    entity.createComponent<inc::BackgroundManager>("ScriptManager", "Background1", 5.5f);
     //mainCamera.addChild(entity.name());
     camera.setClippingNear(-1);
     //scene.eventManager.drop("Start");

@@ -2,10 +2,7 @@
   "MissingTexture": {
     "Path": "resources/textures/missing_texture.png",
     "Scene": [
-      "Main",
-      "MainFile",
-      "Game",
-      "Cyber"
+      "*"
     ],
     "Type": "Texture"
   },
@@ -22,7 +19,8 @@
     "Scene": [
       "Main",
       "MainFile",
-      "Game"
+      "Game",
+      "Loading"
     ],
     "Type": "Texture"
   },
@@ -39,7 +37,8 @@
     "Scene": [
       "Main",
       "MainFile",
-      "Game"
+      "Game",
+      "Loading"
     ],
     "Type": "Texture"
   },
@@ -107,16 +106,14 @@
   "DefaultFont": {
     "Path": "resources/font/calibri-regular.ttf",
     "Scene": [
-      "Main",
-      "MainFile"
+      "*"
     ],
     "Type": "Font"
   },
   "Pixel": {
     "Path": "resources/font/AEXKON_Regular.ttf",
     "Scene": [
-      "Main",
-      "MainFile"
+      "*"
     ],
     "Type": "Font"
   },
@@ -160,18 +157,46 @@
     ],
     "Type": "Audio"
   },
-  "Backpack": {
-    "Path": "resources/model/backpack.obj",
-    "Scene": [
-      "Cyber"
-    ],
-    "Type": "Model"
-  },
   "Cube": {
     "Path": "resources/model/Cube.obj",
     "Scene": [
       "Cyber"
     ],
     "Type": "Model"
+  },
+  "default": {
+    "Path": "resources/shaders/default.fs.glsl",
+    "Scene": [
+      "*"
+    ],
+    "Type": "Shader"
+  },
+  "model": {
+    "Path": "resources/shaders/model.fs.glsl",
+    "Scene": [
+      "*"
+    ],
+    "Type": "Shader"
+  },
+  "text": {
+    "Path": "resources/shaders/font.fs.glsl",
+    "Scene": [
+      "*"
+    ],
+    "Type": "Shader"
+  },
+  "Brick.png": {
+    "Path": "resources/model/Brick.png",
+    "Scene": [
+      "Cyber"
+    ],
+    "Type": "Texture"
+  },
+  "MapLoading": {
+    "Path": "resources/textures/mapLoading.png",
+    "Scene": [
+      "Loading"
+    ],
+    "Type": "Texture"
   }
 }

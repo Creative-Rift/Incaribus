@@ -65,6 +65,9 @@ void Main::onLoad(sw::EventInfo& info)
     subtitleText.setColor(sw::Color(105.0f / 255.0f, 166.0f / 255.0f, 31.0f / 255.0f));
     subtitleText.setFont(font);
 
-    entity.createComponent<inc::BackgroundManager>("ScriptManager");
+    auto& back = entity.createComponent<inc::BackgroundManager>("ScriptManager", "Background1", 5.5f);
+    back.m_layer = 6;
+    back.m_speed = 2;
+    title.setLayer("TextManager", 10);
     camera.setClippingNear(-1);
 }

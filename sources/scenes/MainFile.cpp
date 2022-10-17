@@ -29,5 +29,5 @@ void MainFile::onLoad(sw::EventInfo& info)
     player.createComponent<Player>("ScriptManager");
     opossum.createComponent<inc::Opossum>("ScriptManager");
 
-    entity.createComponent<inc::BackgroundManager>("ScriptManager").start();
+    entity.createComponent<inc::BackgroundManager>("ScriptManager", "Background1", 5.5f).start();
 }

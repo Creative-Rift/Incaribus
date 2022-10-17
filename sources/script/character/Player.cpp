@@ -41,7 +41,7 @@ void Player::start()
     animator.play();
     collision.setSize(33 * 3, 32 * 3);
     rigidbody.setMass(0.75);
-    if (sw::OpenGLModule::sceneManager().getActiveScene().name != "Game")
+    if (sw::OpenGLModule::sceneManager().getActiveScene()->name != "Game")
         rigidbody.setActive(false);
 }
 
@@ -49,7 +49,7 @@ void Player::update()
 {
     if (sw::isKeyDown(sw::Keyboard::G))
         gameObject().scene().getGameObject("MainCamera").getComponent<sw::AudioSource>("AudioManager").play();
-    if (sw::OpenGLModule::sceneManager().getActiveScene().name != "Game")
+    if (sw::OpenGLModule::sceneManager().getActiveScene()->name != "Game")
         return;
     sw::ConcreteComponent auto& velocity = m_gameObject.getComponent<sw::RigidBody2D>("RigidBody2DManager");
     sw::ConcreteComponent auto& anim = m_gameObject.getComponent<sw::Animator>("AnimatorManager");

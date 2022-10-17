@@ -17,7 +17,7 @@ try
 
     sw::CreateScenes();
     sw::OpenGLModule::load();
-    sw::OpenGLModule::sceneManager().loadScene("Cyber");
+    sw::OpenGLModule::sceneManager().loadScene("Loading");
     sw::Speech::flush();
     while (sw::OpenGLModule::isRunning())
         sw::OpenGLModule::update();

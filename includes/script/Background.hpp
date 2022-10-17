@@ -17,9 +17,15 @@ namespace inc
     class Background : public sw::Component
     {
         private:
-            std::string m_texture;
+
         public:
-            explicit Background(sw::GameObject& gameObject, std::string textureName);
+            std::string m_texture;
+            float m_scale;
+            float m_speed;
+            bool m_multipleTexture;
+            sw::FloatRect m_rect;
+
+            explicit Background(sw::GameObject& gameObject, std::string textureName, float scale);
             void start();
             void update();
     }; // class BackGround

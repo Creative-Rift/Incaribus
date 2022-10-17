@@ -10,6 +10,7 @@
 #include "CameraFPS.hpp"
 #include "module/managers/Managers.hpp"
 #include "OpenGLModule.hpp"
+#include "resources/OpenResources.hpp"
 #include "scenes_manager/SceneLoadEvent.hpp"
 
 void Cyber::onLoad(sw::EventInfo& info)
@@ -25,7 +26,7 @@ void Cyber::onLoad(sw::EventInfo& info)
     auto& cube = scene.createGameObject("Cube");
 
     mainCamera.createComponent<inc::CameraFPS>("ScriptManager");
-    model.createComponent<sw::MeshRenderer>("MeshRendererManager", "Backpack");
+    //model.createComponent<sw::MeshRenderer>("MeshRendererManager", "Backpack");
     cube.createComponent<sw::MeshRenderer>("MeshRendererManager", "Cube");
     cube.transform().move(0, 0, 10);
 }
