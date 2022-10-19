@@ -30,7 +30,6 @@ void inc::Background::start()
     sw::ConcreteComponent auto& sprite = m_gameObject.createComponent<sw::Sprite>("SpriteManager");
 
     sprite.setTexture(m_texture);
-    m_gameObject.setLayer("SpriteManager", 5);
     m_gameObject.transform().setScale(m_scale, m_scale);
     if (m_gameObject.name().find('2') != std::string::npos)
         m_gameObject.transform().move(sprite.texture()->getWidth() * m_gameObject.transform().getScale().x, 0);

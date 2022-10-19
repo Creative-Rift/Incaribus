@@ -20,16 +20,19 @@ inc::SceneLoader::~SceneLoader() noexcept
 void inc::SceneLoader::start()
 {
     m_operation = sw::OpenGLModule::sceneManager().loadSceneAsync("Cyber");
-    sw::GameObject& text = m_gameObject.scene().createGameObject("LoadingText");
-    auto& textCpt = text.createComponent<sw::Text>("TextManager");
+    m_text = m_gameObject.scene().createGameObject("LoadingText");
+    auto& textCpt = m_text.value().createComponent<sw::Text>("TextManager");
     std::string font("Pixel");
     std::string ye("Loading complete press SPACE");
     textCpt.setPosition(380, 900).setText(ye).setColor(sw::Color(105.0f / 255.0f, 166.0f / 255.0f, 31.0f / 255.0f)).setFont(font);
-
+    m_text.value().setActive(false);
 }
 
 void inc::SceneLoader::update()
 {
-    if (m_operation->isDone() && sw::isKeyDown(sw::Keyboard::SPACE))
-        sw::OpenGLModule::sceneManager().swapSceneFromAsync(*m_operation, "Cyber");
+    if (m_operation->isDone()) {
+        m_text.value().setActive(true);
+        if (sw::isKeyDown(sw::Keyboard::SPACE))
+            sw::OpenGLModule::sceneManager().swapSceneFromAsync(*m_operation, "Cyber");
+    }
 }

@@ -164,6 +164,13 @@
     ],
     "Type": "Model"
   },
+  "Backpack": {
+    "Path": "resources/model/backpack.obj",
+    "Scene": [
+      "Cyber"
+    ],
+    "Type": "Model"
+  },
   "default": {
     "Path": "resources/shaders/default.fs.glsl",
     "Scene": [
@@ -187,6 +194,13 @@
   },
   "Brick.png": {
     "Path": "resources/model/Brick.png",
+    "Scene": [
+      "Cyber"
+    ],
+    "Type": "Texture"
+  },
+  "diffuse.jpg": {
+    "Path": "resources/model/diffuse.jpg",
     "Scene": [
       "Cyber"
     ],

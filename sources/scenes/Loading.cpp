@@ -30,15 +30,14 @@ void Loading::onLoad(sw::EventInfo& info)
     player.createComponent<PlayerLoading>("ScriptManager");
     loader.createComponent<inc::SceneLoader>("ScriptManager");
     auto& back = background.createComponent<inc::BackgroundManager>("ScriptManager", "Background1", 5.5f);
-    back.m_layer = 6;
+    back.m_layer = 2;
     back.m_speed = 2;
     auto& fore = foreground.createComponent<inc::BackgroundManager>("ScriptManager", "MapLoading", 3.0f);
-    fore.m_layer = 5;
+    fore.m_layer = 1;
     fore.m_speed = 5;
     fore.m_multipleTexture = true;
     fore.m_rect = {0, 17 * 16, 1792, 17 * 16};
     fore.gameObject().transform().move(0, 285);
 
     camera.setClippingNear(-1);
-    camera.setClippingFar(100);
 }

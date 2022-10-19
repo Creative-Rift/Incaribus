@@ -28,7 +28,6 @@ void PlayerLoading::start()
     m_gameObject.transform().setPosition(210, 480);
     m_gameObject.transform().scale(3.0f, 3.0f);
     sprite.setTexture(ye);
-    m_gameObject.setLayer("SpriteManager", 3);
     animator.setRect({33, 32}).setFPS(8).setLoop(true).setAnimType(sw::Animator::ANIM_LINE).setLine(3, 5);
     animator.play();
 }

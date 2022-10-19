@@ -15,7 +15,7 @@ namespace inc
     {
     private:
         std::shared_ptr<sw::AsyncScene> m_operation;
-
+        sw::Reference<sw::GameObject> m_text;
     public:
         explicit SceneLoader(sw::GameObject& gameObject);
         ~SceneLoader() override;
