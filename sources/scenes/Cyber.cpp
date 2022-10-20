@@ -10,7 +10,6 @@
 #include "CameraFPS.hpp"
 #include "module/managers/Managers.hpp"
 #include "OpenGLModule.hpp"
-#include "resources/OpenResources.hpp"
 #include "scenes_manager/SceneLoadEvent.hpp"
 
 void Cyber::onLoad(sw::EventInfo& info)
